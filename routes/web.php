@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('site', 'SiteController');
+Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
+Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
+Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getSubCategory');

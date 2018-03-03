@@ -68,5 +68,63 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>
+    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        $("#export").click(function(){
+            date = new Date();
+          $("#table2excel").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: date+".xls" //do not include extension
+          }); 
+        }); 
+
+        $(document).ready(function() {
+            $('.datatable').DataTable();
+        });
+
+        $(document).on("click", ".deleteRow", function(){
+            $(this).closest('tr').remove();
+        });
+
+        $(document).on("keyup", ".costing", function(){
+            costing = $(this).val();
+            quantity = $(this).closest('tr').find('.quantity').val();
+            console.log(costing);
+            console.log(quantity);
+            $(this).closest('tr').find('.amount').val(costing*quantity);
+        });
+
+        $(document).on("change", ".category", function(){
+            category = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getsubcategory',
+                data: {
+                    'category' : category,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".subcategory").html('');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        $(document).on("click", ".dropdown", function(){
+            wid = $(this).width();
+            console.log(wid);
+            $(".dropdown-menu").css("width",wid);
+            $(".dropdown-menu").css("min-width",wid);
+        });
+    </script>
 </body>
 </html>

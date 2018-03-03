@@ -9,11 +9,15 @@
 
                 <div class="card-body">
                     @if(Auth::user()->role == 1)
-                        <form method="post" action="{{route('site.store')}}">
-                            {{ csrf_field() }}
-                            <input type="text" name="site" required="true">
-                            <input type="submit" class="btn" >
-                        </form>
+                        <center>
+                            <h3>Create a new Site</h3>
+                            <form method="post" action="{{route('site.store')}}">
+                                {{ csrf_field() }}
+                                <input type="text" name="site" required="true">
+                                <input type="submit" class="btn" >
+                            </form>
+                        </center>
+                        <br>
                     @endif
                     <table class="table">
                         <thead>
