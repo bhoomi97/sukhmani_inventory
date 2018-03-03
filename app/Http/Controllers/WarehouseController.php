@@ -42,6 +42,6 @@ class WarehouseController extends Controller
    			$stock->user_id = Auth::user()->id;
    			$stock->save();
    		}
-   		return "Success";
+   		return redirect('/warehouseStock');
     }
 }
