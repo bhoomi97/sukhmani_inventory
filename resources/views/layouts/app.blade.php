@@ -98,6 +98,14 @@
             $(this).closest('tr').find('.amount').val(costing*quantity);
         });
 
+        $(document).on("keyup", ".quantity", function(){
+            quantity = $(this).val();
+            costing = $(this).closest('tr').find('.costing').val();
+            console.log(costing);
+            console.log(quantity);
+            $(this).closest('tr').find('.amount').val(costing*quantity);
+        });
+
         $(document).on("change", ".category", function(){
             category = $(this).val();
             c = $(this).closest('tr').attr('count');

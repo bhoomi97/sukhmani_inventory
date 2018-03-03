@@ -8,6 +8,7 @@
                         <tr count='+count+'>\
                             <td>\
                                 <select class="form-control category" name="categories[]">\
+                                    <option >Select Category</option>\
                                     @foreach($cats as $cat)\
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>\
                                     @endforeach\
@@ -19,16 +20,16 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0">\
+                                <input type="number" class="form-control costing" name="costing[]" step="0.01" >\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control costing" name="costing[]" step="0.01" >\
+                                <input type="number" class="form-control quantity" name="quantity[]" step="1">\
                             </td>\
                             <td>\
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" >\
                             </td>\
                             <td>\
-                                <input type="test" class="form-control vendor" name="vendor[]">\
+                                <input type="test" class="form-control comment" name="comment[]">\
                             </td>\
                             <td>\
                                 <input type="date" class="form-control" name="date[]" required="true">\
@@ -46,8 +47,8 @@
 
 <div class="container">
     <div class="row">
-        <center><h2>Warehouse</h2></center>
-        <form method="POST" action="">
+        <center><h2>Warehouse Inventory</h2></center>
+        <form method="POST" action="{{route('saveWarehouseInventory')}}">
             {{ csrf_field() }}
             <div class="col-md-10 col-md-offset-1" style="overflow-x:auto;">
                 <table class="table table-hover table-striped table-condensed">
@@ -55,10 +56,10 @@
                         <tr>
                             <th style="width: 19%;">Category</th>
                             <th style="width: 19%;">Sub Category</th>
-                            <th style="width: 12%;">Quantity</th>
                             <th style="width: 15%;">Rate/Unit (in Rs)</th>
+                            <th style="width: 12%;">Quantity</th>
                             <th style="width: 15%;">Total Cost (in Rs)</th>
-                            <th style="width: 15%;">Vendor</th>
+                            <th style="width: 15%;">Comment</th>
                             <th style="width:10%;">Date</th>
                             <th>Delete</th>
                         </tr>
@@ -79,16 +80,16 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0" >
+                                <input type="number" class="form-control costing" name="costing[]"  step="0.01">
                             </td>
                             <td>
-                                <input type="number" class="form-control costing" name="costing[]"  step="0.01">
+                                <input type="number" class="form-control quantity" name="quantity[]" step="1" >
                             </td>
                             <td>
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" >
                             </td>
                             <td>
-                                <input type="test" class="form-control vendor" name="vendor[]">
+                                <input type="test" class="form-control comment" name="comment[]">
                             </td>
                             <td>
                                 <input type="date" class="form-control" name="date[]" required="true">

@@ -14,5 +14,9 @@ class WarehouseStock extends Model
         return $this->hasOne('App\SubCategory','id','subcategory_id');    	
     }
     
-    protected $table = 'site_stock';
+    public function user(){
+        return $this->hasOne('App\User','id','user_id');    	
+    }
+
+    protected $table = 'warehouse_stock';
 }
