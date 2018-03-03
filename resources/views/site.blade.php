@@ -22,7 +22,9 @@
                                 <th>Created By</th>
                                 <th>Deleted By</th>
                                 <th>Status</th>
-                                <th>Delete</th>
+                                @if(Auth::user()->role == 1)
+                                    <th>Delete</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -44,15 +46,17 @@
                                             InActive
                                         @endif 
                                     </td>
-                                    <td>
-                                        @if($site->status == 0)
-                                            --
-                                        @else
-                                            {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
-                                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
-                                            {{ Form::close() }}
-                                        @endif                                        
-                                    </td>
+                                    @if(Auth::user()->role == 1)
+                                        <td>
+                                            @if($site->status == 0)
+                                                --
+                                            @else
+                                                {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
+                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                {{ Form::close() }}
+                                            @endif                                        
+                                        </td>
+                                    @endif
                                 </tr>
                             @endforeach
                         </tbody>
