@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Site;
+use Auth;
 
 class SiteController extends Controller
 {
@@ -13,7 +15,8 @@ class SiteController extends Controller
      */
     public function index()
     {
-        //
+        $sites = Site::get();
+        return view('site',compact('sites'));
     }
 
     /**
@@ -34,7 +37,15 @@ class SiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if(Auth::user()->role == 1){
+            $site = new Site;
+            $site->site_name = $request->site;
+            $site->save();
+            return redirect('/site');
+        }
+        else{
+            abort('404');
+        }
     }
 
     /**
