@@ -37,7 +37,29 @@
                             <li><a class="nav-link" href="{{ route('login') }}">Login</a></li>
                             <li><a class="nav-link" href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a class="nav-link" href="{{ route('site.index') }}">Sites</a></li>
+                            <li><a class="nav-link" href="{{ route('site.index') }}">Manage Sites</a></li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Inventory <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('warehouseInventory') }}">
+                                        WareHouse
+                                    </a>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Stock <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('warehouseStock') }}">
+                                        WareHouse
+                                    </a>
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -127,12 +149,12 @@
             });
         });
 
-        $(document).on("click", ".dropdown", function(){
-            wid = $(this).width();
-            console.log(wid);
-            $(".dropdown-menu").css("width",wid);
-            $(".dropdown-menu").css("min-width",wid);
-        });
+        // $(document).on("click", ".dropdown", function(){
+        //     wid = $(this).width();
+        //     console.log(wid);
+        //     $(".dropdown-menu").css("width",wid);
+        //     $(".dropdown-menu").css("min-width",wid);
+        // });
     </script>
 </body>
 </html>

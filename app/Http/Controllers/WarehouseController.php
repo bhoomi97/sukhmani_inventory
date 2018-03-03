@@ -7,6 +7,7 @@ use App\SubCategory;
 use App\Category;
 use App\WarehouseStock;
 use Auth;
+use AWS;
 
 class WarehouseController extends Controller
 {
@@ -42,6 +43,17 @@ class WarehouseController extends Controller
    			$stock->user_id = Auth::user()->id;
    			$stock->save();
    		}
+
+        $mobiles = [9654379609,9235553838,9582269794,9311044634];
+        foreach ($mobiles as $mobile) {
+                $sns = AWS::createClient('sns');
+                $args = array();
+                $args['SMSType'] = "transactional";
+                $args['SenderID'] = "anurag";
+                $args['Message'] = "Hi Admin, \n \nThe warehouse entries have been changed, Please have a look !";
+                $args['PhoneNumber'] = "+91-". $mobile;
+                $result = $sns->publish($args);
+            }
    		return redirect('/warehouseStock');
     }
 }
