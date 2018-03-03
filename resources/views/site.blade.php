@@ -8,14 +8,14 @@
                 <div class="card-header">Sites</div>
 
                 <div class="card-body">
-                    @if(Auth::usder()->role == 1)
+                    @if(Auth::user()->role == 1)
                         <form method="post" action="{{route('site.store')}}">
                             {{ csrf_field() }}
                             <input type="text" name="site" required="true">
                             <input type="submit" class="btn" >
                         </form>
                     @endif
-                    <table>
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Site Name</th>
