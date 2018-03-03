@@ -19,19 +19,39 @@
                         <thead>
                             <tr>
                                 <th>Site Name</th>
+                                <th>Created By</th>
+                                <th>Deleted By</th>
                                 <th>Status</th>
+                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($sites as $site)
                                 <tr>
                                     <td>{{$site->site_name}}</td>
+                                    <td>{{$site->createduser->name}}</td>
+                                    <td>
+                                        @if(isset($site->deleteduser->name))
+                                            {{$site->deleteduser->name}}
+                                        @else
+                                            --
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($site->status == 1)
                                             Active
                                         @else
                                             InActive
                                         @endif 
+                                    </td>
+                                    <td>
+                                        @if($site->status == 0)
+                                            --
+                                        @else
+                                            {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
+                                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                            {{ Form::close() }}
+                                        @endif                                        
                                     </td>
                                 </tr>
                             @endforeach

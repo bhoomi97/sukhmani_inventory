@@ -40,6 +40,7 @@ class SiteController extends Controller
         if(Auth::user()->role == 1){
             $site = new Site;
             $site->site_name = $request->site;
+            $site->created_user_id = Auth::user()->id;
             $site->save();
             return redirect('/site');
         }
@@ -90,6 +91,19 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        echo $id;
+        if(Auth::user()->role == 1){
+            $site = Site::where('id',$id)->get();
+            if(count($site) == 0){
+                return abort('404');
+            }
+            $site = $site[0];
+            $site->status = 0;
+            $site->deleted_user_id = Auth::user()->id;
+            $site->save();
+            return redirect('/site');
+        }
+        else
+            abort('404');
     }
 }
