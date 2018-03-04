@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Site;
 use Auth;
+use App\SiteStock;
+use App\Category;
+use App\SubCategory;
 
 class SiteController extends Controller
 {
@@ -57,7 +60,16 @@ class SiteController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Auth::user()->role!=1)
+            abort('404');
+            $site = Site::where('id',$id)->first();
+          $categories = Category::get();
+          foreach ($categories as $key => $category) {
+            $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
+            $categories[$key]->stock = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->get();
+            $categories[$key]->amount = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->sum('amount');
+          }
+        return view('siteStock',compact('categories','site'));
     }
 
     /**

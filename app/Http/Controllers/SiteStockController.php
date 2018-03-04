@@ -62,7 +62,7 @@ class SiteStockController extends Controller
 				$stock->user_id = Auth::user()->id;
 			}else{
 				$stock = new SiteStock;
-				$stock->site_id += $sites[$key];
+				$stock->site_id = $sites[$key];
 				$stock->subcategory_id = $categories[$key];
 				$stock->rate = $costings[$key];
 				$stock->qty = $quantities[$key];
@@ -95,7 +95,7 @@ class SiteStockController extends Controller
 			$args['PhoneNumber'] = "+91-". $mobile;
 			$result = $sns->publish($args);
 		}
-		return redirect('/warehouseStock');
+		return redirect('/site');
 	}
 
 }

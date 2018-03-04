@@ -61,6 +61,9 @@
                                                 {{ Form::close() }}
                                             @endif                                        
                                         </td>
+                                        <td>
+                                            <a href="{{route('site.show',$site->id)}}">Stock</a>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
