@@ -97,7 +97,8 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>
+    <script src="{{ asset('js/jquery.table2excel.js') }}"></script>    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         $("#export").click(function(){
