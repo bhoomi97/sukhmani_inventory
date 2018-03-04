@@ -27,15 +27,15 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control costing" name="costing[]" required="true">\
+                                <select class="form-control costing costing1" name="costing[]" required="true">\
                                     <option disabled="true">Select Sub Category</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0"  required="true">\
+                                <input type="number" class="form-control quantity quantity1" name="quantity[]" step="0"  required="true">\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control amount" name="amount[]"   step="0.01" required="true">\
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">\
                             </td>\
                             <td>\
                                 <input type="text" class="form-control comment" name="comment[]">\
@@ -118,15 +118,15 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control costing" name="costing[]" required="true">
+                                <select class="form-control costing costing1" name="costing[]" required="true">
                                     <option disabled="true">Select Sub Category</option>
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0" required="true">
+                                <input type="number" class="form-control quantity quantity1" name="quantity[]" step="0" required="true">
                             </td>
                             <td>
-                                <input type="number" class="form-control amount" name="amount[]"   step="0.01" required="true">
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">
                             </td>
                             <td>
                                 <input type="text" class="form-control comment" name="comment[]">

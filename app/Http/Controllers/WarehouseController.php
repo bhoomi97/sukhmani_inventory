@@ -35,7 +35,7 @@ class WarehouseController extends Controller
         $costings = $request->costing;
         $amounts = $request->amount;
         $dates = $request->date;
-    		$comments = $request->comment;         
+    		$comments = $request->comment;      
     		foreach ($categories as $key => $category) {
      			$SubCategory = SubCategory::where('id',$categories[$key])->get();
      			if(count($SubCategory) == 0)
@@ -44,7 +44,7 @@ class WarehouseController extends Controller
           if(count($stocks)){
             $stock = $stocks[0];
             $stock->qty += $quantities[$key];
-            $stock->amount += $amounts[$key];
+            $stock->amount += $costings[$key] * $quantities[$key];
             $stock->date = $dates[$key];
             $stock->comment = $comments[$key];
             $stock->user_id = Auth::user()->id;
@@ -54,7 +54,7 @@ class WarehouseController extends Controller
        			$stock->subcategory_id = $categories[$key];
        			$stock->rate = $costings[$key];
        			$stock->qty = $quantities[$key];
-       			$stock->amount = $amounts[$key];
+       			$stock->amount = $costings[$key] * $quantities[$key];
        			$stock->comment = $comments[$key];
        			$stock->date = $dates[$key];
        			$stock->user_id = Auth::user()->id;
@@ -64,7 +64,7 @@ class WarehouseController extends Controller
           $stock->subcategory_id = $categories[$key];
           $stock->rate = $costings[$key];
           $stock->qty = $quantities[$key];
-          $stock->amount = $amounts[$key];
+          $stock->amount = $costings[$key] * $quantities[$key];
           $stock->comment = $comments[$key];
           $stock->date = $dates[$key];
           $stock->user_id = Auth::user()->id;
@@ -78,7 +78,7 @@ class WarehouseController extends Controller
                 $args = array();
                 $args['SMSType'] = "transactional";
                 $args['SenderID'] = "anurag";
-                $args['Message'] = "Hi Admin, \n \nThe warehouse entries have been changed, Please have a look !";
+                $args['Message'] = "Hi Admin, \n \nThe warehouse entries have been changed by ".Auth::user()->name.", Please have a look !";
                 $args['PhoneNumber'] = "+91-". $mobile;
                 $result = $sns->publish($args);
             }

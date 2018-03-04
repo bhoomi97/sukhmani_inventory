@@ -46,7 +46,7 @@ class SiteStockController extends Controller
 
 			$stock->rate = $costings[$key];
 			$stock->qty -= $quantities[$key];
-			$stock->amount -= $amounts[$key];
+			$stock->amount -= $costings[$key] * $quantities[$key];
 			$stock->date = $dates[$key];
 			$stock->user_id = Auth::user()->id;
 			$stock->save();
@@ -56,7 +56,7 @@ class SiteStockController extends Controller
 				$stock = $stock[0];
 				$stock->site_id += $sites[$key];
 				$stock->qty += $quantities[$key];
-				$stock->amount += $amounts[$key];
+				$stock->amount += $costings[$key] * $quantities[$key];
 				$stock->comment = $comments[$key];
 				$stock->date = $dates[$key];
 				$stock->user_id = Auth::user()->id;
@@ -66,7 +66,7 @@ class SiteStockController extends Controller
 				$stock->subcategory_id = $categories[$key];
 				$stock->rate = $costings[$key];
 				$stock->qty = $quantities[$key];
-				$stock->amount = $amounts[$key];
+				$stock->amount = $costings[$key] * $quantities[$key];
 				$stock->comment = $comments[$key];
 				$stock->date = $dates[$key];
 				$stock->user_id = Auth::user()->id;
@@ -78,7 +78,7 @@ class SiteStockController extends Controller
 			$stock->subcategory_id = $categories[$key];
 			$stock->rate = $costings[$key];
 			$stock->qty = $quantities[$key];
-			$stock->amount = $amounts[$key];
+			$stock->amount = $costings[$key] * $quantities[$key];
 			$stock->comment = $comments[$key];
 			$stock->date = $dates[$key];
 			$stock->user_id = Auth::user()->id;
@@ -91,7 +91,7 @@ class SiteStockController extends Controller
 			$args = array();
 			$args['SMSType'] = "transactional";
 			$args['SenderID'] = "anurag";
-			$args['Message'] = "Hi Admin, \n \nThe items have been moved to Sites. Please have a look !";
+			$args['Message'] = "Hi Admin, \n \nThe items have been moved to Sites by ".Auth::user()->name.". Please have a look !";
 			$args['PhoneNumber'] = "+91-". $mobile;
 			$result = $sns->publish($args);
 		}
