@@ -62,7 +62,11 @@
                                             @endif                                        
                                         </td>
                                         <td>
+                                        @if($site->status == 1)
                                             <a href="{{route('site.show',$site->id)}}">Stock</a>
+                                        @else
+                                            --
+                                        @endif
                                         </td>
                                     @endif
                                 </tr>

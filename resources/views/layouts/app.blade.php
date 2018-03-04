@@ -155,27 +155,6 @@
                 }
             });
         });
-
-        $(document).on("change", ".costing1", function(){
-            costing = $(this).val();
-            c = $(this).closest('tr').attr('count');
-            subcategory = $("tr[count='"+c+"']").find(".subcategory").val();
-            $.ajax({
-                type: 'GET',
-                url: 'getmaxquantity',
-                data: {
-                    'subcategory' : subcategory,
-                    'costing' : costing,
-                    'c' : c
-                },
-                success: function(data){
-                    console.log(data);
-                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0]);
-                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max:'+data[0]);
-                }
-            });
-        });
-
         // $(document).on("click", ".dropdown", function(){
         //     wid = $(this).width();
         //     console.log(wid);

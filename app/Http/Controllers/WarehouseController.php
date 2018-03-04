@@ -18,7 +18,7 @@ class WarehouseController extends Controller
       $categories = Category::get();
       foreach ($categories as $key => $category) {
         $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
-        $categories[$key]->stock = warehouseStock::whereIn('subcategory_id',$subcategories)->get();
+        $categories[$key]->stock = warehouseStock::whereIn('subcategory_id',$subcategories)->where('qty','!=',0)->get();
         $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
       }
     	return view('warehouseStock',compact('categories'));

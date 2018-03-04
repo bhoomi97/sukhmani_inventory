@@ -8,6 +8,7 @@ use Auth;
 use App\SiteStock;
 use App\Category;
 use App\SubCategory;
+use App\WarehouseStock;
 
 class SiteController extends Controller
 {
@@ -66,7 +67,7 @@ class SiteController extends Controller
           $categories = Category::get();
           foreach ($categories as $key => $category) {
             $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
-            $categories[$key]->stock = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->get();
+            $categories[$key]->stock = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->where('qty','!=',0)->get();
             $categories[$key]->amount = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->sum('amount');
           }
         return view('siteStock',compact('categories','site'));
@@ -109,6 +110,13 @@ class SiteController extends Controller
                 return abort('404');
             }
             $site = $site[0];
+            $stocks = SiteStock::where('site_id',$site->id)->get();
+            foreach ($stocks as $stock) {
+                $s = WarehouseStock::where('subcategory_id',$stock->subcategory_id)->where('rate',$stock->rate)->first();
+                $s->qty+=$stock->qty;
+                $s->amount+=$stock->amount;
+                $s->save();
+            }
             $site->status = 0;
             $site->deleted_user_id = Auth::user()->id;
             $site->save();
