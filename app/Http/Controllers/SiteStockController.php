@@ -8,6 +8,9 @@ use App\SubCategory;
 use App\Site;
 use App\SiteStock;
 use App\LogSiteStock;
+use App\WarehouseStock;
+use Auth;
+use AWS;
 
 class SiteStockController extends Controller
 {
@@ -28,21 +31,38 @@ class SiteStockController extends Controller
 		$comments = $request->comment;         
 		$dates = $request->date;
 		$errors = [];
-		return;
 		foreach ($categories as $key => $category) {
 			$SubCategory = SubCategory::where('id',$categories[$key])->get();
 			if(count($SubCategory) == 0)
 				continue;
-			$stocks = warehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
-			if(count($stocks)==0){
+			$stocks = WarehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
+			if(count($stocks)==0)
 				continue;
+			$stock = $stocks[0];
+			if($quantities[$key]>$stock->qty){
+				array_push($errors, [$SubCategory[0]->subcategory,$quantities[$key]]);
+				continue;
+			}
+
+			$stock->rate = $costings[$key];
+			$stock->qty -= $quantities[$key];
+			$stock->amount -= $amounts[$key];
+			$stock->date = $dates[$key];
+			$stock->user_id = Auth::user()->id;
+			$stock->save();
+
+			$stock = SiteStock::where('site_id',$sites[$key])->where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
+			if(count($stock)){
+				$stock = $stock[0];
+				$stock->site_id += $sites[$key];
+				$stock->qty += $quantities[$key];
+				$stock->amount += $amounts[$key];
+				$stock->comment = $comments[$key];
+				$stock->date = $dates[$key];
+				$stock->user_id = Auth::user()->id;
 			}else{
-				$stock = $stocks[0];
-				if($quantities[$key]>$stock->qty){
-					array_push($errors, [$SubCategory[0]->subcategory,$quantities[$key]]);
-					continue;
-				}
-				$stock = new WarehouseStock;
+				$stock = new SiteStock;
+				$stock->site_id += $sites[$key];
 				$stock->subcategory_id = $categories[$key];
 				$stock->rate = $costings[$key];
 				$stock->qty = $quantities[$key];
@@ -50,9 +70,11 @@ class SiteStockController extends Controller
 				$stock->comment = $comments[$key];
 				$stock->date = $dates[$key];
 				$stock->user_id = Auth::user()->id;
-				$stock->save();
 			}
+			$stock->save();
+
 			$stock = new LogSiteStock;
+			$stock->site_id += $sites[$key];
 			$stock->subcategory_id = $categories[$key];
 			$stock->rate = $costings[$key];
 			$stock->qty = $quantities[$key];
@@ -61,7 +83,6 @@ class SiteStockController extends Controller
 			$stock->date = $dates[$key];
 			$stock->user_id = Auth::user()->id;
 			$stock->save();
-
 		}
 
 		$mobiles = [9654379609,9235553838,9582269794,9311044634];
