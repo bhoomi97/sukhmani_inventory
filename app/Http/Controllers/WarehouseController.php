@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\SubCategory;
 use App\Category;
 use App\WarehouseStock;
+use App\LogWarehouseStock;
 use Auth;
 use AWS;
 
@@ -28,21 +29,42 @@ class WarehouseController extends Controller
         $costings = $request->costing;
         $amounts = $request->amount;
         $dates = $request->date;
-		$comments = $request->comment;         
-		foreach ($categories as $key => $category) {
-   			$SubCategory = SubCategory::where('id',$categories[$key])->get();
-   			if(count($SubCategory) == 0)
-   				continue;
-   			$stock = new WarehouseStock;
-   			$stock->subcategory_id = $categories[$key];
-   			$stock->rate = $costings[$key];
-   			$stock->qty = $quantities[$key];
-   			$stock->amount = $amounts[$key];
-   			$stock->comment = $comments[$key];
-   			$stock->date = $dates[$key];
-   			$stock->user_id = Auth::user()->id;
-   			$stock->save();
-   		}
+    		$comments = $request->comment;         
+    		foreach ($categories as $key => $category) {
+     			$SubCategory = SubCategory::where('id',$categories[$key])->get();
+     			if(count($SubCategory) == 0)
+     				continue;
+          $stocks = warehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
+          if(count($stocks)){
+            $stock = $stocks[0];
+            $stock->qty += $quantities[$key];
+            $stock->amount += $amounts[$key];
+            $stock->date = $dates[$key];
+            $stock->comment = $comments[$key];
+            $stock->user_id = Auth::user()->id;
+            $stock->save();
+          }else{
+       			$stock = new WarehouseStock;
+       			$stock->subcategory_id = $categories[$key];
+       			$stock->rate = $costings[$key];
+       			$stock->qty = $quantities[$key];
+       			$stock->amount = $amounts[$key];
+       			$stock->comment = $comments[$key];
+       			$stock->date = $dates[$key];
+       			$stock->user_id = Auth::user()->id;
+       			$stock->save();
+          }
+          $stock = new LogWarehouseStock;
+          $stock->subcategory_id = $categories[$key];
+          $stock->rate = $costings[$key];
+          $stock->qty = $quantities[$key];
+          $stock->amount = $amounts[$key];
+          $stock->comment = $comments[$key];
+          $stock->date = $dates[$key];
+          $stock->user_id = Auth::user()->id;
+          $stock->save();
+
+     		}
 
         $mobiles = [9654379609,9235553838,9582269794,9311044634];
         foreach ($mobiles as $mobile) {

@@ -22,4 +22,7 @@ Route::resource('site', 'SiteController');
 Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
 Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
 Route::post('warehouseInventory', 'WarehouseController@save')->name('saveWarehouseInventory');
+Route::get('siteInventory', 'SiteStockController@inventory')->name('siteInventory');
+Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
 Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getSubCategory');
+Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getSubCategoryRates');
