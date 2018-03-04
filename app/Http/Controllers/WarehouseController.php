@@ -13,7 +13,13 @@ use AWS;
 class WarehouseController extends Controller
 {
     public function index(){
-    	return view('warehouseStock');
+      $categories = Category::get();
+      foreach ($categories as $key => $category) {
+        $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
+        $categories[$key]->stock = warehouseStock::whereIn('subcategory_id',$subcategories)->get();
+        $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
+      }
+    	return view('warehouseStock',compact('categories'));
     }
 
     public function inventory(){
