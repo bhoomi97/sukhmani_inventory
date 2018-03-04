@@ -67,7 +67,7 @@
                                         <a class="dropdown-item" href="{{ route('warehouseStock') }}">
                                             WareHouse
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('home') }}">
+                                        <a class="dropdown-item" href="{{ route('site.index') }}">
                                             Site Report
                                         </a>
                                     </div>

@@ -91,7 +91,6 @@ class SiteController extends Controller
      */
     public function destroy($id)
     {
-        echo $id;
         if(Auth::user()->role == 1){
             $site = Site::where('id',$id)->get();
             if(count($site) == 0){

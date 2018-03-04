@@ -13,6 +13,8 @@ use AWS;
 class WarehouseController extends Controller
 {
     public function index(){
+    if(Auth::user()->role !=1)
+      abort('404');
       $categories = Category::get();
       foreach ($categories as $key => $category) {
         $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();

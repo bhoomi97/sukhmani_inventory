@@ -28,6 +28,7 @@
                                 <th>Status</th>
                                 @if(Auth::user()->role == 1)
                                     <th>Delete</th>
+                                    <th>Stock</th>
                                 @endif
                             </tr>
                         </thead>

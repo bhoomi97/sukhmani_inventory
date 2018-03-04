@@ -17,15 +17,17 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('site', 'SiteController');
-Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
-Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
-Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
-Route::post('warehouseInventory', 'WarehouseController@save')->name('saveWarehouseInventory');
-Route::get('siteInventory', 'SiteStockController@inventory')->name('siteInventory');
-Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
-Route::get('logsitestock', 'LogStockController@index')->name('logsitestock');
-Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getsubcategory');
-Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
-Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
+Route::group(['middleware' => ['auth']], function () {
+	Route::get('/home', 'HomeController@index')->name('home');
+	Route::resource('site', 'SiteController');
+	Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
+	Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
+	Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
+	Route::post('warehouseInventory', 'WarehouseController@save')->name('saveWarehouseInventory');
+	Route::get('siteInventory', 'SiteStockController@inventory')->name('siteInventory');
+	Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
+	Route::get('logsitestock', 'LogStockController@index')->name('logsitestock');
+	Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getsubcategory');
+	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
+	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
+});
