@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\WarehouseStock;
 use App\Category;
 use App\SubCategory;
+use Mail;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -26,6 +28,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Mail::send('email.notify',[], function($message){
+        //     $message->to('himanshuagrawal1998@gmail.com')->from('himanshuagrawal1998@gmail.com', 'Sukhmani')->subject("Stock Updated");
+        // });           
           $categories = Category::get();
           foreach ($categories as $key => $category) {
             $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
