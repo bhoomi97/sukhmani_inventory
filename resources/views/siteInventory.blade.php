@@ -27,12 +27,12 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control costing costing1" name="costing[]" required="true">\
+                                <select class="form-control costing " name="costing[]" required="true">\
                                     <option disabled="true">Select Sub Category</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity quantity1" name="quantity[]" step="0"  required="true">\
+                                <input type="number" class="form-control quantity " name="quantity[]" step="0"  required="true">\
                             </td>\
                             <td>\
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">\
@@ -118,12 +118,12 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control costing costing1" name="costing[]" required="true">
+                                <select class="form-control costing " name="costing[]" required="true">
                                     <option disabled="true">Select Sub Category</option>
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity quantity1" name="quantity[]" step="0" required="true">
+                                <input type="number" class="form-control quantity " name="quantity[]" step="0" required="true">
                             </td>
                             <td>
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">
@@ -147,4 +147,57 @@
         </form>
     </div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+
+        $(document).on("change", ".subcategory", function(){
+            subcategory = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getsubcategoryrates',
+                data: {
+                    'subcategory' : subcategory,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    if(data[0].length === 0){
+                        alert("No Items Present in Warehouse.");
+                        return;
+                    }
+                    $("tr[count='"+data[1]+"']").find(".costing").html('');
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0][0].qty);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max: '+data[0][0].qty);
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d.rate+'>'+d.rate +'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        $(document).on("change", ".costing", function(){
+            costing = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            subcategory = $("tr[count='"+c+"']").find(".subcategory").val();
+            $.ajax({
+                type: 'GET',
+                url: 'getmaxquantity',
+                data: {
+                    'subcategory' : subcategory,
+                    'costing' : costing,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0]);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max:'+data[0]);
+                }
+            });
+        });
+
+    
+</script>
 @endsection
