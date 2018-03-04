@@ -169,10 +169,32 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".costing").html('');
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0][0].qty);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max: '+data[0][0].qty);
                     data[0].forEach(function(d){
-                        $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d.rate+'>'+d.rate+'</option>');
+                        $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d.rate+'>'+d.rate +'</option>');
                         console.log(d);
                     })
+                }
+            });
+        });
+
+        $(document).on("change", ".costing", function(){
+            costing = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            subcategory = $("tr[count='"+c+"']").find(".subcategory").val();
+            $.ajax({
+                type: 'GET',
+                url: 'getmaxquantity',
+                data: {
+                    'subcategory' : subcategory,
+                    'costing' : costing,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0]);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max:'+data[0]);
                 }
             });
         });

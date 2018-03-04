@@ -7,7 +7,7 @@
         $("#table").append('\
                         <tr count='+count+'>\
                             <td>\
-                                <select class="form-control category" name="categories[]">\
+                                <select class="form-control category" name="categories[]" required="true">\
                                     <option >Select Category</option>\
                                     @foreach($cats as $cat)\
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>\
@@ -15,12 +15,12 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control subcategory" name="subcategories[]">\
+                                <select class="form-control subcategory" name="subcategories[]" required="true">\
                                     <option disabled="true">Select Category</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control" name="site[]">\
+                                <select class="form-control" name="site[]" required="true">\
                                     @foreach($sites as $site)\
                                         <option value="{{$site->id}}">{{$site->site_name}}</option>\
                                     @endforeach\
@@ -32,10 +32,10 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0" >\
+                                <input type="number" class="form-control quantity" name="quantity[]" step="0"  required="true">\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control amount" name="amount[]"   step="0.01">\
+                                <input type="number" class="form-control amount" name="amount[]"   step="0.01" required="true">\
                             </td>\
                             <td>\
                                 <input type="text" class="form-control comment" name="comment[]">\
@@ -88,7 +88,7 @@
                             <th style="width: 19%;">Sub Category</th>
                             <th style="width: 20%;">To Site</th>
                             <th style="width: 18%;">Rate/Unit (in Rs)</th>
-                            <th style="width: 12%;">Quantity</th>
+                            <th style="width: 18%;">Quantity</th>
                             <th style="width: 20% !important;">Total Cost (in Rs)</th>
                             <th style="width: 12%;">Comment</th>
                             <th style="width: 15%;">Date</th>
@@ -98,20 +98,20 @@
                     <tbody id="table">
                         <tr count="0">
                             <td>
-                                <select class="form-control category" name="categories[]">
-                                    <option >Select Category</option>
+                                <select class="form-control category" name="categories[]" required="true">
+                                    <option disabled="" selected="">Select Category</option>
                                     @foreach($cats as $cat)
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control subcategory" name="subcategories[]">
+                                <select class="form-control subcategory" name="subcategories[]" required="true">
                                     <option disabled="true">Select Category</option>
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control" name="site[]">
+                                <select class="form-control" name="site[]" required="true">
                                     @foreach($sites as $site)
                                         <option value="{{$site->id}}">{{$site->site_name}}</option>
                                     @endforeach
@@ -123,10 +123,10 @@
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity" name="quantity[]" step="0" >
+                                <input type="number" class="form-control quantity" name="quantity[]" step="0" required="true">
                             </td>
                             <td>
-                                <input type="number" class="form-control amount" name="amount[]"   step="0.01">
+                                <input type="number" class="form-control amount" name="amount[]"   step="0.01" required="true">
                             </td>
                             <td>
                                 <input type="text" class="form-control comment" name="comment[]">

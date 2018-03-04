@@ -25,6 +25,7 @@ Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehou
 Route::post('warehouseInventory', 'WarehouseController@save')->name('saveWarehouseInventory');
 Route::get('siteInventory', 'SiteStockController@inventory')->name('siteInventory');
 Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
-Route::get('logsitestock', 'LogStockController@index')->name('logwarehouseStock');
-Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('logSiteStock');
-Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getSubCategoryRates');
+Route::get('logsitestock', 'LogStockController@index')->name('logsitestock');
+Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getsubcategory');
+Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
+Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
