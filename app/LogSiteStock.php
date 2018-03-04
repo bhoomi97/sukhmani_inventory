@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class SiteStock extends Model
+class LogSiteStock extends Model
 {
     protected $fillable = [
        'id', 'site_id', 'subcategory_id', 'rate', 'qty', 'amount', 'comment','user_id','date'
@@ -19,9 +19,9 @@ class SiteStock extends Model
     }
     
     public function user(){
-        return $this->hasOne('App\User','id','user_id');        
+        return $this->hasOne('App\User','id','user_id');    	
     }
 
-    protected $table = 'site_stock';
+    protected $table = 'logsite_stock';
 
 }

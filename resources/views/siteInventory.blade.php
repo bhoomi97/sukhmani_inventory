@@ -21,18 +21,24 @@
                             </td>\
                             <td>\
                                 <select class="form-control" name="site[]">\
-                                    <option>Site 1</option>\
-                                    <option>Site 2</option>\
+                                    @foreach($sites as $site)\
+                                        <option value="{{$site->id}}">{{$site->site_name}}</option>\
+                                    @endforeach\
+                                </select>\
+                            </td>\
+                            <td>\
+                                <select class="form-control costing" name="costing[]" required="true">\
+                                    <option disabled="true">Select Sub Category</option>\
                                 </select>\
                             </td>\
                             <td>\
                                 <input type="number" class="form-control quantity" name="quantity[]" step="0" >\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control costing" name="costing[]"  step="0.01">\
+                                <input type="number" class="form-control amount" name="amount[]"   step="0.01">\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control amount" name="amount[]"  step="0.01">\
+                                <input type="text" class="form-control comment" name="comment[]">\
                             </td>\
                             <td>\
                                 <input type="date" class="form-control" name="date[]" required="true">\
@@ -74,16 +80,17 @@
         <center><h2>To Site</h2></center>
         <form method="POST" action="{{ route('siteInventory') }}">
             {{ csrf_field() }}
-            <div class="col-md-10 col-md-offset-1" style="overflow-x:auto;">
+            <div class="col-md-12" style="overflow-x:auto;">
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
                             <th style="width: 19%;">Category</th>
                             <th style="width: 19%;">Sub Category</th>
-                            <th style="width: 15%;">To Site</th>
+                            <th style="width: 20%;">To Site</th>
                             <th style="width: 18%;">Rate/Unit (in Rs)</th>
                             <th style="width: 12%;">Quantity</th>
                             <th style="width: 20% !important;">Total Cost (in Rs)</th>
+                            <th style="width: 12%;">Comment</th>
                             <th style="width: 15%;">Date</th>
                             <th>Delete</th>
                         </tr>
@@ -111,7 +118,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control costing" name="costing[]">
+                                <select class="form-control costing" name="costing[]" required="true">
                                     <option disabled="true">Select Sub Category</option>
                                 </select>
                             </td>
@@ -120,6 +127,9 @@
                             </td>
                             <td>
                                 <input type="number" class="form-control amount" name="amount[]"   step="0.01">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control comment" name="comment[]">
                             </td>
                             <td>
                                 <input type="date" class="form-control" name="date[]" required="true">
