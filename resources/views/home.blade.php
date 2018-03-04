@@ -17,7 +17,6 @@
                     <h3><a href="{{route('site.index')}}">Add/Remove Site</a></h3>
                     <h3><a href="{{route('warehouseInventory')}}">Add to Warehouse</a></h3>
                     <h3><a href="{{route('warehouseStock')}}">Generate Report</a></h3>
-                    <h3><a href="{{route('logwarehouseStock')}}">Generate Detailed Report</a></h3>
                 </div>
             </div>
         </div>

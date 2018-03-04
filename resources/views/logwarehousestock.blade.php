@@ -14,6 +14,7 @@
 			            <th style="text-align: center!important;">Rate</th>
 			            <th style="text-align: center!important;">Quantity</th>
 			            <th style="text-align: center!important;">Amount</th>
+			            <th style="text-align: center!important;">Comment</th>
 			            <th style="text-align: center!important;">By User</th>
 			            <th style="text-align: center!important;">Dated</th>
 			        </tr>
@@ -27,12 +28,14 @@
 			    			<td>{{$stock->rate}}</td>
 			    			<td>{{$stock->qty}}</td>
 			    			<td>{{$stock->amount}}</td>
+			    			<td>{{$stock->comment}}</td>
 			    			<td>{{$stock->user->name}}</td>
 			    			<td>{{$stock->date}}</td>
 			    		</tr>
 			    	@endforeach
 			    </tbody>
 			</table>
+			    	<center>{{$stocks->links()}}</center>
 			<br>
             <center><input type="submit" class="form-control btn btn-primary" id="export" style="width: 200px;margin-bottom: 40px;" name="submit" value="Download Report"></center>
 		</div>
