@@ -50,7 +50,7 @@
         <center><h2>Warehouse Inventory</h2></center>
         <form method="POST" action="{{route('saveWarehouseInventory')}}">
             {{ csrf_field() }}
-            <div class="col-md-10 col-md-offset-1" style="overflow-x:auto;">
+            <div class="col-md-12" style="overflow-x:auto;">
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
