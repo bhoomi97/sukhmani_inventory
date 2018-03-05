@@ -13,7 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background: url(".../public/about-img1.jpg");
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
