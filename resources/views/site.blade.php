@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -10,11 +11,11 @@
                 <div class="card-body">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3>Create a new Site</h3>
-                            <form method="post" action="{{route('site.store')}}">
+                            <h3 id="create">Create a new Site</h3>
+                            <form id="create_form" method="post" action="{{route('site.store')}}">
                                 {{ csrf_field() }}
-                                <input type="text" name="site" required="true">
-                                <input type="submit" class="btn" >
+                                <input type="text" id="create_text" name="site" required="true">
+                                <input type="submit" id="create_btn" value="Create site" class="btn btn-info" >
                             </form>
                         </center>
                         <br>
@@ -63,7 +64,7 @@
                                         </td>
                                         <td>
                                         @if($site->status == 1)
-                                            <a href="{{route('site.show',$site->id)}}">Stock</a>
+                                            <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
                                         @else
                                             --
                                         @endif
