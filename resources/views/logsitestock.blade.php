@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
 	<div class="row">
         <center><h2>Log Site Stock</h2></center>
