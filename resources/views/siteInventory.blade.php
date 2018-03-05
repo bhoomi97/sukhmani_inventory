@@ -79,7 +79,7 @@
             </div>
         @endif
         <?php session()->forget('errors');session()->forget('success'); ?>
-        <center><h2 id="site_head">To Site</h2></center>
+        <h2 id="site_head" style="margin: auto;">To Site</h2>
         <form method="POST" action="{{ route('siteInventory') }}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">

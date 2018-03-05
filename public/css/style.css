@@ -152,17 +152,6 @@ h2#warehouse_head,h2#site_head{
     font-weight: 400;
     text-align: center;
 }
-#warehouse_subcat{
-    width: 70%;
-    margin-left: 1.7rem;
-}
-#site_subcat{
-    width: 100%;
-    margin-left: 0rem;
-}
-input.form-control.amount {
-    width: 128%;
-    margin-left: -0.3rem;
-}
+
 
 

@@ -1,0 +1,31 @@
+*:focus {
+    outline: none;
+}
+#stock_card{
+    background-color: #00acc1;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 0rem;
+ }
+ a.nav-link.waves-effect.waves-light {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+}
+.navbar-expand-lg .navbar-nav{
+	margin-right: -4rem;
+}
+.row.justify-content-center {
+    margin-top: 8%;
+}
+#stock_table th{
+    color: #00ACC1;
+    text-align: center;
+}
+#stock_table td{
+    color: slategrey;
+    text-align: center;
+}

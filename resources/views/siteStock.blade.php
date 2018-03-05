@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/siteStock.css')}}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{$site->site_name}} Stock</div>
+                <div class="card-header" id="stock_card">{{$site->site_name}} Stock</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,7 +29,7 @@
 
                                 <div id="collapse{{$category->id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$category->id}}">
                                   <div class="card-block">
-                                    <table class="table">
+                                    <table class="table" id="stock_table">
                                         <thead>
                                             <tr>
                                                 <th>Sub Category</th>
