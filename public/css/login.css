@@ -1,0 +1,71 @@
+*:focus {
+    outline: none;
+}
+.card-header{
+    background-color: #00acc1;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 0rem;
+ }
+ a.nav-link.waves-effect.waves-light {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+}
+.navbar-expand-lg .navbar-nav{
+	margin-right: -4rem;
+}
+.row.justify-content-center {
+    margin-top: 8%;
+}
+form{
+	margin-top: 3rem;
+}
+.form-group{
+	margin-bottom: 3rem;
+}
+input#email {
+    text-decoration: none;
+    outline: none;
+}
+input:focus{
+	outline: 0;
+}
+
+/*email label*/
+label#email{
+    color: grey;
+}
+
+/*password label*/
+label#password {
+    color: grey;
+}
+
+label#rememberme {
+    color: grey;
+}
+
+label#name{
+    color: grey;
+}
+
+label#confirm_password{
+    color: grey;
+    margin-bottom: 2rem;
+}
+
+button.btn.btn-info.waves-effect.waves-light {
+    margin-top: -2rem;
+}
+
+p#forget{
+	color: grey;
+}
+
+a.btn-link{
+	margin-top: -1rem;
+}

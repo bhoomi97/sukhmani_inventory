@@ -8,12 +8,12 @@
         <title>Sukhmani</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
+        <link href="https://fonts.googleapis.com/css?family=Raleway|Roboto" rel="stylesheet">
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background: url("about-img1.jpg") no-repeat center center fixed;
+                background-size: cover;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -46,13 +46,16 @@
             }
 
             .title {
-                font-size: 84px;
+                font-size: 30px;
             }
 
             .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
+                color: white;
+                background-color: rgba(158, 158, 158, 0.8);
+                border-radius: 6px;
+                margin-right: 4px;
+                padding: 0.5rem 1rem;
+                font-size: 14px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -61,6 +64,20 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+                background-color: rgba(158, 158, 158, 0.8);
+                padding: 1rem 10rem;
+                color: white;
+                border-radius: 6px;
+
+            }
+            hr{
+               width: 30%;
+               height: 5px;
+               margin: -1rem auto;
+               background-color: white;
+               color: white;
+               border: none; 
+               border-radius: 4px;
             }
         </style>
     </head>
@@ -78,11 +95,15 @@
             @endif
 
             <div class="content">
+              
                 <div class="title m-b-md">
-                    Sukhmani
+                   <h1 class="h1-responsive" align="center">eStock</h1>
+                   <hr>
+                   <h4 class="h4-responsive" align="center">Sukhmani<br>BuildWell</h4>
                 </div>
-
+             
             </div>
+          
         </div>
     </body>
 </html>
