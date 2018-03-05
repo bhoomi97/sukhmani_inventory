@@ -16,8 +16,10 @@
 
                     <h3><a href="{{route('site.index')}}">Add/Remove Site</a></h3>
                     <h3><a href="{{route('warehouseInventory')}}">Add to Warehouse</a></h3>
+                    <h3><a href="{{route('siteInventory')}}">Move to Site</a></h3>
                     @if(Auth::user()->role==1)
-                      <h3><a href="{{route('warehouseStock')}}">Generate Report</a></h3>
+                      <h3><a href="{{route('warehouseStock')}}">Generate Warehouse Report</a></h3>
+                      <h3><a href="{{route('site.index')}}">Generate Site Report</a></h3>
                       <center><div id="chart_div"></div></center>
                     @endif
                 </div>
