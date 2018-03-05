@@ -49,7 +49,10 @@
 <div class="container-fluid">
   <div class="jumbotron">
     <div class="row">
-        <center><h2 id="warehouse_head">Warehouse Inventory</h2></center>
+        <div class="row" style="width: 100%; text-align: center;">
+        <h2 id="warehouse_head" style="margin: auto;">Warehouse Inventory</h2>
+            
+        </div>
         <form method="POST" action="{{route('saveWarehouseInventory')}}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">
