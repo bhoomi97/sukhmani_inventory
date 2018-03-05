@@ -57,7 +57,7 @@
                                             @if($site->status == 0)
                                                 --
                                             @else
-                                                {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
+                                                {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id], 'style' => 'margin-top: -15px;']) }}
                                                     {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                                 {{ Form::close() }}
                                             @endif                                        
