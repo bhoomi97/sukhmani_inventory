@@ -64,7 +64,7 @@
 
             .m-b-md {
                 margin-bottom: 30px;
-                background-color: rgba(158, 158, 158, 0.8);
+                background-color: rgba(158, 158, 158, 0.5);
                 padding: 1rem 10rem;
                 color: white;
                 border-radius: 6px;
@@ -78,6 +78,42 @@
                color: white;
                border: none; 
                border-radius: 4px;
+            }
+            @media(max-width: 320px){
+                .m-b-md{
+                    margin-top: 6rem;
+                    padding: 1rem 2rem;
+                }
+                .top-right{
+                    margin-right: 2.5rem;
+                }
+            }
+            @media(max-width: 375px) and (min-width: 360px){
+                .m-b-md{
+                    margin-top: 6rem;
+                    padding: 1rem 2rem;
+                }
+                .top-right{
+                    margin-right: 4rem;
+                }
+            }
+            @media(max-width: 425px) and (min-width: 400px){
+                .m-b-md{
+                    margin-top: 6rem;
+                    padding: 1rem 2rem;
+                }
+                .top-right{
+                    margin-right: 5.5rem;
+                }
+            }
+            @media(max-width: 768px) and (min-width: 700px){
+                .m-b-md{
+                    margin-top: 6rem;
+                    padding: 1rem 10rem;
+                }
+                .top-right{
+                    margin-right: 0rem;
+                }
             }
         </style>
     </head>
@@ -95,13 +131,13 @@
             @endif
 
             <div class="content">
-              
+              <div class="jumbotron">
                 <div class="title m-b-md">
                    <h1 class="h1-responsive" align="center">eStock</h1>
                    <hr>
                    <h4 class="h4-responsive" align="center">Sukhmani<br>BuildWell</h4>
                 </div>
-             
+             </div>
             </div>
           
         </div>

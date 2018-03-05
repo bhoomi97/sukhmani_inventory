@@ -1,11 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/warehouseStock.css')}}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">WareHouse Stock</div>
+                <div class="card-header" id="warehouse_stock">WareHouse Stock</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,18 +18,18 @@
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         @foreach($categories as $category)
                             @if(count($category->stock))
-                              <div class="card">
+                              <div class="card" id="stock">
                                 <div class="card-header" role="tab" id="heading{{$category->id}}">
                                   <h5 class="mb-0">
-                                    <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true" aria-controls="collapse{{$category->id}}">
-                                        {{$category->category}}<span style="float: right;"> (Total Amt: {{$category->amount}})</span>
+                                    <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" id="stock_head" aria-expanded="true" aria-controls="collapse{{$category->id}}">
+                                        {{$category->category}}<span style="float: right;"> (Total Amt: {{$category->amount}} Rs)</span>
                                     </a>
                                   </h5>
                                 </div>
 
                                 <div id="collapse{{$category->id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$category->id}}">
                                   <div class="card-block">
-                                    <table class="table">
+                                    <table class="table" id="stock_table">
                                         <thead>
                                             <tr>
                                                 <th>Sub Category</th>

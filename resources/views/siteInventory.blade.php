@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <script type="text/javascript">
     var count = 1;
     function addfield() {
@@ -54,6 +55,7 @@
 </script>
 
 <div class="container">
+  <div class="jumbotron">
     <div class="row">
         @if(session('errors'))
             <div class="row">
@@ -77,19 +79,19 @@
             </div>
         @endif
         <?php session()->forget('errors');session()->forget('success'); ?>
-        <center><h2>To Site</h2></center>
+        <center><h2 id="site_head">To Site</h2></center>
         <form method="POST" action="{{ route('siteInventory') }}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
-                            <th style="width: 19%;">Category</th>
+                            <th style="width: 40%;">Category</th>
                             <th style="width: 19%;">Sub Category</th>
                             <th style="width: 20%;">To Site</th>
-                            <th style="width: 18%;">Rate/Unit (in Rs)</th>
+                            <th style="width: 18%;">Rate/Unit(Rs)</th>
                             <th style="width: 18%;">Quantity</th>
-                            <th style="width: 20% !important;">Total Cost (in Rs)</th>
+                            <th style="width: 20% !important;">Total Cost(Rs)</th>
                             <th style="width: 12%;">Comment</th>
                             <th style="width: 15%;">Date</th>
                             <th>Delete</th>
@@ -106,7 +108,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control subcategory" name="subcategories[]" required="true">
+                                <select class="form-control subcategory" id="site_subcat" name="subcategories[]" required="true">
                                     <option disabled="true">Select Category</option>
                                 </select>
                             </td>
@@ -142,10 +144,11 @@
                 </table>
                 <span style="float: right;"><input type="button" class="btn btn-sm btn-primary" onclick="addfield()" value="Add Row"></span>
                 <br><br>
-                <center><input type="submit" class="form-control btn btn-primary" style="width: 100px; margin-bottom: 40px;" name="submit"></center>
+                <center><input type="submit" class="form-control btn btn-primary" style="width: 150px; margin-bottom: 40px;" name="submit"></center>
             </div>        
         </form>
     </div>
+  </div>
 </div>
 @endsection
 @section('script')
