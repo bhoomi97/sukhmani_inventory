@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -13,14 +14,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <h3><a href="{{route('site.index')}}">Add/Remove Site</a></h3>
-                    <h3><a href="{{route('warehouseInventory')}}">Add to Warehouse</a></h3>
-                    <h3><a href="{{route('siteInventory')}}">Move to Site</a></h3>
+                    <div class="jumbotron">
+                       <h3><a href="{{route('site.index')}}" id="add_site">Add/Remove Site</a></h3>
+                       <h3><a href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a></h3>
+                       <h3><a href="{{route('siteInventory')}}" id="move_site">Move to Site</a></h3>
+                    </div>
                     @if(Auth::user()->role==1)
-                      <h3><a href="{{route('warehouseStock')}}">Generate Warehouse Report</a></h3>
-                      <h3><a href="{{route('site.index')}}">Generate Site Report</a></h3>
+                    <div class="jumbotron">
+                      <h3><a href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a></h3>
+                      <h3><a href="{{route('site.index')}}" id="gen_site">Generate Site Report</a></h3>
+                    </div>
+                    <div class="jumbotron">
                       <center><div id="chart_div"></div></center>
+                    </div>
                     @endif
                 </div>
             </div>

@@ -1,0 +1,168 @@
+*:focus {
+    outline: none;
+}
+.card-header{
+    background-color: #00acc1;
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 1rem 0rem;
+ }
+ a.nav-link.waves-effect.waves-light {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-left: 1rem;
+}
+.navbar-expand-lg .navbar-nav{
+	margin-right: -4rem;
+}
+.row.justify-content-center {
+    margin-top: 8%;
+}
+form{
+	margin-top: 3rem;
+}
+.form-group{
+	margin-bottom: 3rem;
+}
+
+/*login page*/
+input#email {
+    text-decoration: none;
+    outline: none;
+}
+input:focus{
+	outline: 0;
+}
+
+label#email{
+    color: grey;
+}
+
+label#password {
+    color: grey;
+}
+
+label#rememberme {
+    color: grey;
+}
+
+label#name{
+    color: grey;
+}
+
+label#confirm_password{
+    color: grey;
+    margin-bottom: 2rem;
+}
+
+button.btn.btn-info.waves-effect.waves-light {
+    margin-top: -2rem;
+}
+
+p#forget{
+	color: grey;
+}
+
+a.btn-link{
+	margin-top: -1rem;
+}
+@media(max-width: 760px){
+  input#email{
+    margin-bottom: -2rem;
+  }
+  button.btn.btn-info.waves-effect.waves-light {
+    margin-left: 2rem;
+    width: 80%;
+  }
+  p#forget{
+    margin-top: 1rem;
+  }
+   label#confirm_password{
+    margin-bottom: 0rem;
+    margin-top: -2rem;
+   }
+   label#email{
+     margin-top: -2rem;
+   }
+   input#password-confirm{
+     margin-bottom: 2rem;
+   }
+}
+@media(max-width: 900px) and (min-width: 761px){
+  input#email{
+    margin-bottom: -2rem;
+  }
+  button.btn.btn-info.waves-effect.waves-light {
+    margin-left: 1rem;
+  }
+  p#forget{
+    margin-top: 1rem;
+    margin-left: -1rem;
+  }
+ 
+}
+
+/* Dashboard */
+a#add_site,a#add_warehouse,a#move_site,a#gen_warehouse,a#gen_site{
+    color: #01579b;
+    margin-top: 1rem 1rem;
+}
+a#add_site:hover,a#add_warehouse:hover,a#move_site:hover,a#gen_warehouse:hover,a#gen_site:hover,
+a#add_site:focus,a#add_warehouse:focus,a#move_site:focus,a#gen_warehouse:focus,a#gen_site:focus{
+    color: #88BDBC;
+}
+
+/* Add/Remove site */
+h3#create {
+    color: #01579b ;
+    margin-top: 2rem;
+    font-size: 32px;
+}
+input#create_text {
+    padding: 0.2rem;
+}
+input#create_text:focus{
+    border: 1px solid #00ACC1;
+}
+form#create_form {
+    margin-bottom: 3rem;
+}
+table.table td{
+    text-align: center;
+    color: slategrey;
+}
+table.table th{
+    text-align: center;
+    color: #00ACC1;
+}
+a#create_stock{
+    color: #0091ea;
+    font-weight: bold;
+}
+
+/* warehouse inventory */
+.table{
+    max-width: 500%;
+}
+h2#warehouse_head,h2#site_head{
+    color: #01579b ;
+    font-weight: 400;
+    text-align: center;
+}
+#warehouse_subcat{
+    width: 70%;
+    margin-left: 1.7rem;
+}
+#site_subcat{
+    width: 100%;
+    margin-left: 0rem;
+}
+input.form-control.amount {
+    width: 128%;
+    margin-left: -0.3rem;
+}
+
+
