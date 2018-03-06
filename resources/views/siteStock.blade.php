@@ -60,8 +60,36 @@
                         @endforeach
                       
                     </div>
+                        <table class="sitestock" style="display: none;">
+                          <thead>
+                              <tr>
+                                  <th>Sub Category</th>
+                                  <th>Rate</th>
+                                  <th>Quantity</th>
+                                  <th>Amount</th>
+                                  <th>Comment</th>
+                                  <th>Date</th>
+                              </tr>
+                          </thead>                            
+                          <tbody>
+                            @foreach($categories as $category)
+                              @if(count($category->stock))
+                                @foreach($category->stock as $stock)
+                                    <tr>
+                                        <td>{{$stock->subcategory->subcategory}}</td>
+                                        <td>{{$stock->rate}}</td>
+                                        <td>{{$stock->qty}}</td>
+                                        <td>{{$stock->amount}}</td>
+                                        <td>{{$stock->comment}}</td>
+                                        <td>{{$stock->date}}</td>
+                                    </tr>
+                                @endforeach
+                              @endif
+                            @endforeach
+                          </tbody>
+                        </table>
                     <br>
-                    <center><a href="" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="" id="siteexport" class="btn btn-primary">Generate Report</a></center>
 
                 </div>
             </div>

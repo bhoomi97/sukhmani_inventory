@@ -116,7 +116,6 @@
     <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script src="{{ asset('js/jquery.table2excel.js') }}"></script>    
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
         $("#warehouseexport").click(function(){
@@ -128,10 +127,15 @@
             filename: "Warehouse Stock"+date+".xls" //do not include extension
           }); 
         }); 
-
-        $(document).ready(function() {
-            $('.datatable').DataTable();
-        });
+        $("#siteexport").click(function(){
+            date = new Date();
+          $(".sitestock").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: "Site Stock"+date+".xls" //do not include extension
+          }); 
+        }); 
 
         $(document).on("click", ".deleteRow", function(){
             $(this).closest('tr').remove();
