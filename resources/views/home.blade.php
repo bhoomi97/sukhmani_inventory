@@ -24,6 +24,7 @@
                       <h3><a href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a></h3>
                       <h3><a href="{{route('site.index')}}" id="gen_site">Generate Site Report</a></h3>
                     </div>
+                    <div class="card-header">Warehouse Stock</div>
                     <div class="jumbotron">
                       <center><div id="chart_div"></div></center>
                     </div>
@@ -59,7 +60,7 @@
               ]);
 
               // Set chart options
-              var options = {'title':'Warehouse Stock',
+              var options = {'title':'',
                              'width':400,
                              'height':300};
 
