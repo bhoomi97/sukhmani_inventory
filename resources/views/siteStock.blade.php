@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="row" ><h4><span style="float: left;">Site Stock</span> (<span style="float: right;">Total Amount: Rs.{{$total}})</span></h4></div>
+                    <div class="row"><center style="margin: auto;"><h4>Site Stock (Total Amount: Rs.{{$total}})</h4></center></div>
                       <center><div id="chart_div"></div></center>
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         @foreach($categories as $category)
@@ -60,6 +60,8 @@
                         @endforeach
                       
                     </div>
+                    <br>
+                    <center><a href="" class="btn btn-primary">Generate Report</a></center>
 
                 </div>
             </div>
