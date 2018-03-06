@@ -59,10 +59,38 @@
                               </div>
                             @endif
                         @endforeach
-                      
+                        <table style="display: none;" class="warehousestock">
+                          <thead>
+                              <tr>
+                                  <th>Sub Category</th>
+                                  <th>Rate</th>
+                                  <th>Quantity</th>
+                                  <th>Amount</th>
+                                  <th>Comment</th>
+                                  <th>Date</th>
+                              </tr>
+                          </thead>                            
+                          <tbody>
+                          @foreach($categories as $category)
+                              @if(count($category->stock))
+                                @foreach($category->stock as $stock)
+                                    <tr>
+                                        <td>{{$stock->subcategory->subcategory}}</td>
+                                        <td>{{$stock->rate}}</td>
+                                        <td>{{$stock->qty}}</td>
+                                        <td>{{$stock->amount}}</td>
+                                        <td>{{$stock->comment}}</td>
+                                        <td>{{$stock->date}}</td>
+                                    </tr>
+                                @endforeach
+                              @endif
+                          @endforeach
+                          </tbody>
+                          
+                        </table>
                     </div> 
                     <br>
-                    <center><a href="" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="" id="warehouseexport" class="btn btn-primary">Generate Report</a></center>
                 </div>
             </div>
         </div>

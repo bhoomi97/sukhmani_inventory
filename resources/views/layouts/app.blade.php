@@ -119,13 +119,13 @@
     <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
-        $("#export").click(function(){
+        $("#warehouseexport").click(function(){
             date = new Date();
-          $("#table2excel").table2excel({
+          $(".warehousestock").table2excel({
             // exclude CSS class
             exclude: ".noExl",
             name: "Worksheet Name",
-            filename: date+".xls" //do not include extension
+            filename: "Warehouse Stock"+date+".xls" //do not include extension
           }); 
         }); 
 
