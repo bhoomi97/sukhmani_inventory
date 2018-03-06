@@ -16,12 +16,13 @@ class WarehouseController extends Controller
     if(Auth::user()->role !=1)
       abort('404');
       $categories = Category::get();
+      $total = warehouseStock::sum('amount');
       foreach ($categories as $key => $category) {
         $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
         $categories[$key]->stock = warehouseStock::whereIn('subcategory_id',$subcategories)->where('qty','!=',0)->get();
         $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
       }
-    	return view('warehouseStock',compact('categories'));
+    	return view('warehouseStock',compact('categories','total'));
     }
 
     public function inventory(){

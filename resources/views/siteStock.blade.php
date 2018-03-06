@@ -7,13 +7,13 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" id="stock_card">{{$site->site_name}} Stock</div>
-
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="row" ><h4><span style="float: left;">Site Stock</span> (<span style="float: right;">Total Amount: Rs.{{$total}})</span></h4></div>
                       <center><div id="chart_div"></div></center>
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         @foreach($categories as $category)
@@ -22,7 +22,7 @@
                                 <div class="card-header" role="tab" id="heading{{$category->id}}">
                                   <h5 class="mb-0">
                                     <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true" aria-controls="collapse{{$category->id}}">
-                                        {{$category->category}}<span style="float: right;"> (Total Amt: {{$category->amount}})</span>
+                                        {{$category->category}}<span style="float: right;"> (Total Amt: Rs.{{$category->amount}})</span>
                                     </a>
                                   </h5>
                                 </div>
@@ -91,7 +91,7 @@
               ]);
 
               // Set chart options
-              var options = {'title':'Site Stock',
+              var options = {'title':'',
                              'width':400,
                              'height':300};
 
