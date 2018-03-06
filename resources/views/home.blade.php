@@ -26,7 +26,11 @@
                     </div>
                     <div class="card-header">Warehouse Stock</div>
                     <div class="jumbotron">
-                      <center><div id="chart_div"></div></center>
+                      <center><div id="chart_div" style="width: 100%"></div></center>
+                    </div>
+                    <div class="card-header">Site Wise Stock</div>
+                    <div class="jumbotron">
+                      <center><div id="chart_div1" style="width: 100%px; height: 500px;"></div></center>
                     </div>
                     @endif
                 </div>
@@ -70,5 +74,26 @@
             }        
       })
   </script>
-@endif
+    <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded',function(){
+        google.charts.load("current", {packages:["corechart"]});
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+          var data = google.visualization.arrayToDataTable([
+                  ['Element', 'Density'],
+            @foreach($sites as $site)
+              ['{{$site->site_name}}', parseInt({{$site->amount}})],
+            @endforeach
+            ]);
+          var options = {
+            title: '',
+            legend: { position: 'none' },
+          };
+
+          var chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+          chart.draw(data, options);
+        }
+      });
+    </script>
+  @endif
 @endsection
