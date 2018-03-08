@@ -171,6 +171,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".subcategory").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
                         console.log(d);
@@ -193,6 +194,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".vendor").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".vendor").append('<option value='+d.id+'>'+d.vendor+'</option>');
                         console.log(d);
@@ -215,6 +217,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".specification").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".specification").append('<option value='+d.id+'>'+d.specification+'</option>');
                         console.log(d);

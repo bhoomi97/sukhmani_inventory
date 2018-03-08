@@ -33,14 +33,16 @@ class WarehouseController extends Controller
     }
 
     public function save(Request $request){
-        $categories = $request->subcategories;
+        $specifications = $request->specifications;
         $quantities = $request->quantity;
         $costings = $request->costing;
         $amounts = $request->amount;
+        $purchased_by = $request->purchased_by;
+        $recieved_by = $request->recieved_by;
         $dates = $request->date;
-    		$comments = $request->comment;      
-    		foreach ($categories as $key => $category) {
-     			$SubCategory = SubCategory::where('id',$categories[$key])->get();
+    		$comments = $request->comment;
+    		foreach ($specifications as $key => $specification) {
+     			$specification = Specification::where('id',$specifications[$key])->get();
      			if(count($SubCategory) == 0)
      				continue;
           $stocks = warehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
