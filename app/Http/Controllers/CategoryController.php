@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\SubCategory;
 use App\WarehouseStock;
 use App\Category;
+use App\Vendor;
+use App\Specification;
 use Auth;
 
 class CategoryController extends Controller
@@ -24,13 +26,38 @@ class CategoryController extends Controller
         $rates = WarehouseStock::where('subcategory_id',$subcategory_id)->where('qty','>','0')->get();
         return [$rates,$c];       
     }
-    
+
     public function getmaxquantity(Request $request){
         $subcategory_id = $request->subcategory;
         $costing = $request->costing;
         $c = $request->c;
         $rates = WarehouseStock::where('subcategory_id',$subcategory_id)->where('rate',$costing)->get();
         return [$rates[0]->qty,$c];       
+    }
+
+    public function getVendor(Request $request){
+        $subcategory_id = $request->subcategory;
+        $c = $request->c;
+        $vendors = Vendor::where('subcategory_id',$subcategory_id)->get();
+        return [$vendors,$c];       
+    }
+
+    public function getSpecification(Request $request){
+        $vendor_id = $request->vendor;
+        $c = $request->c;
+        $specifications = Specification::where('vendor_id',$vendor_id)->get();
+        return [$specifications,$c];
+    }
+    
+    public function getSpecificationRates(Request $request){
+        $specification_id = $request->specification;
+        $c = $request->c;
+        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->limit(1)->select('rate')->get();
+        if(count($rate) ==0)
+            $rate = "";
+        else
+            $rate = $rate[0]->rate;
+        return [$rate,$c];
     }
 
     /**

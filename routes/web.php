@@ -31,6 +31,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
 	Route::get('logsitestock', 'LogStockController@index')->name('logsitestock');
 	Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getsubcategory');
+	Route::get('/getvendor', 'CategoryController@getVendor')->name('getvendor');
+	Route::get('/getspecification', 'CategoryController@getSpecification')->name('getspecification');
 	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
+	Route::get('/getspecificationrates', 'CategoryController@getSpecificationRates')->name('getspecificationrates');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
 });

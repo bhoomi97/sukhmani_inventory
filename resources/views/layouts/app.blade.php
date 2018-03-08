@@ -157,6 +157,7 @@
             $(this).closest('tr').find('.amount').val(costing*quantity);
         });
 
+        // for inventory
         $(document).on("change", ".category", function(){
             category = $(this).val();
             c = $(this).closest('tr').attr('count');
@@ -178,7 +179,69 @@
             });
         });
 
+        // for inventory
+        $(document).on("change", ".subcategory", function(){
+            subcategory = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getvendor',
+                data: {
+                    'subcategory' : subcategory,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".vendor").html('');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".vendor").append('<option value='+d.id+'>'+d.vendor+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
 
+        // for inventory
+        $(document).on("change", ".vendor", function(){
+            vendor = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getspecification',
+                data: {
+                    'vendor' : vendor,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".specification").html('');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".specification").append('<option value='+d.id+'>'+d.specification+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        // for inventory
+        $(document).on("change", ".specification", function(){
+            specification = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getspecificationrates',
+                data: {
+                    'specification' : specification,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".costing").val(data[0]);
+                }
+            });
+        });        
+
+        //for vendor - specification
         $(document).on("change", "#category", function(){
             category = $(this).val();
             c = 1;

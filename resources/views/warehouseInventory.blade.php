@@ -64,6 +64,8 @@
                         <tr>
                             <th style="width: 40%;">Category</th>
                             <th style="width: 19%;">Sub Category</th>
+                            <th style="width: 19%;">Vendor</th>
+                            <th style="width: 19%;">Specification</th>
                             <th style="width: 15%;" id="rate">Rate/Unit(Rs)</th>
                             <th style="width: 12%;">Quantity</th>
                             <th style="width: 15%;">Total Cost(Rs)</th>
@@ -85,6 +87,16 @@
                             <td>
                                 <select class="form-control subcategory" id="warehouse_subcat" name="subcategories[]">
                                     <option disabled="true">Select Category</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control vendor" id="warehouse_vendor" name="vendors[]">
+                                    <option disabled="true">Select SubCategory</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control specification" id="warehouse_specification" name="specifications[]">
+                                    <option disabled="true">Select Vendor</option>
                                 </select>
                             </td>
                             <td>
