@@ -7,6 +7,7 @@ use App\SubCategory;
 use App\Category;
 use App\WarehouseStock;
 use App\LogWarehouseStock;
+use App\Specification;
 use Auth;
 use AWS;
 
@@ -43,33 +44,35 @@ class WarehouseController extends Controller
     		$comments = $request->comment;
     		foreach ($specifications as $key => $specification) {
      			$specification = Specification::where('id',$specifications[$key])->get();
-     			if(count($SubCategory) == 0)
+     			if(count($specification) == 0)
      				continue;
-          $stocks = warehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
-          if(count($stocks)){
-            $stock = $stocks[0];
-            $stock->qty += $quantities[$key];
-            $stock->amount += $costings[$key] * $quantities[$key];
-            $stock->date = $dates[$key];
-            $stock->comment = $comments[$key];
-            $stock->user_id = Auth::user()->id;
-            $stock->save();
-          }else{
-       			$stock = new WarehouseStock;
-       			$stock->subcategory_id = $categories[$key];
-       			$stock->rate = $costings[$key];
-       			$stock->qty = $quantities[$key];
-       			$stock->amount = $costings[$key] * $quantities[$key];
-       			$stock->comment = $comments[$key];
-       			$stock->date = $dates[$key];
-       			$stock->user_id = Auth::user()->id;
-       			$stock->save();
-          }
-          $stock = new LogWarehouseStock;
-          $stock->subcategory_id = $categories[$key];
+          // $stocks = warehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
+          // if(count($stocks)){
+          //   $stock = $stocks[0];
+          //   $stock->qty += $quantities[$key];
+          //   $stock->amount += $costings[$key] * $quantities[$key];
+          //   $stock->date = $dates[$key];
+          //   $stock->comment = $comments[$key];
+          //   $stock->user_id = Auth::user()->id;
+          //   $stock->save();
+          // }else{
+       			// $stock = new WarehouseStock;
+       			// $stock->subcategory_id = $categories[$key];
+       			// $stock->rate = $costings[$key];
+       			// $stock->qty = $quantities[$key];
+       			// $stock->amount = $costings[$key] * $quantities[$key];
+       			// $stock->comment = $comments[$key];
+       			// $stock->date = $dates[$key];
+       			// $stock->user_id = Auth::user()->id;
+       			// $stock->save();
+          // }
+          $stock = new WarehouseStock;
+          $stock->specification_id = $specifications[$key];
           $stock->rate = $costings[$key];
           $stock->qty = $quantities[$key];
           $stock->amount = $costings[$key] * $quantities[$key];
+          $stock->purchased_by = $purchased_by[$key];
+          $stock->recieved_by = $recieved_by[$key];
           $stock->comment = $comments[$key];
           $stock->date = $dates[$key];
           $stock->user_id = Auth::user()->id;
