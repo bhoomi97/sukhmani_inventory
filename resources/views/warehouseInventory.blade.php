@@ -50,7 +50,11 @@
   <div class="jumbotron">
     <div class="row">
         <div class="row" style="width: 100%;">
-            <h3><a class="btn btn-primary" href="{{route('category.index')}}">Category</a><a class="btn btn-primary" href="{{route('subcategory.index')}}">SubCategory</a></h3>
+            <h3>
+                <a class="btn btn-primary" href="{{route('category.index')}}">Category</a>
+                <a class="btn btn-primary" href="{{route('subcategory.index')}}">SubCategory</a>
+                <a class="btn btn-primary" href="{{route('vendor.index')}}">Vendor</a>
+            </h3>
         </div>
         <div class="row" style="width: 100%; text-align: center;">
             <h2 id="warehouse_head" style="margin: auto;">Warehouse Inventory</h2>
