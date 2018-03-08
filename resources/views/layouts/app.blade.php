@@ -217,7 +217,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".specification").html('');
-                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
+                    $("tr[count='"+data[1]+"']").find(".specification").append('<option>Select Specification</option');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".specification").append('<option value='+d.id+'>'+d.specification+'</option>');
                         console.log(d);
