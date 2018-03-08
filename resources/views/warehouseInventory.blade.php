@@ -69,6 +69,8 @@
                             <th style="width: 15%;" id="rate">Rate/Unit(Rs)</th>
                             <th style="width: 12%;">Quantity</th>
                             <th style="width: 15%;">Total Cost(Rs)</th>
+                            <th style="width: 15%;">Purchased By</th>
+                            <th style="width: 15%;">Recieved By</th>
                             <th style="width: 15%;">Comment</th>
                             <th style="width:10%;">Date</th>
                             <th>Delete</th>
@@ -107,6 +109,12 @@
                             </td>
                             <td>
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" >
+                            </td>
+                            <td>
+                                <input type="text" class="form-control purchased_by" name="purchased_by[]">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control recieved_by" name="recieved_by[]">
                             </td>
                             <td>
                                 <input type="test" class="form-control comment" name="comment[]">

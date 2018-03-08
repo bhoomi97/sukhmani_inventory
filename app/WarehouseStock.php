@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class WarehouseStock extends Model
 {
 	protected $fillable = [
-       'id', 'specification_id', 'rate', 'qty', 'amount', 'comment'
+       'id', 'specification_id', 'rate', 'qty', 'amount', 'comment', 'purchased_by', 'recieved_by'
     ];
 
     public function subcategory(){
