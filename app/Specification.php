@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Specification extends Model
 {
     protected $fillable = [
-       'id', 'specification','subcategory_id'
+       'id', 'specification','vendor_id'
     ];
 
-    public function subcategory(){
-        return $this->hasOne('App\SubCategory','id','subcategory_id');    	
+    public function vendor(){
+        return $this->hasOne('App\Vendor','id','vendor_id');    	
     }
 
     protected $table = 'specifications';
