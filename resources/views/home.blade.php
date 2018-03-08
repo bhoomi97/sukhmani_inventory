@@ -38,7 +38,7 @@
         </div>
     </div>
 </div>
-@if(Auth::user()->role==1)
+@if(Auth::user()->role==2)
   <script type="text/javascript">
       document.addEventListener('DOMContentLoaded',function(){
 

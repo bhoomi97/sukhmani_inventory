@@ -33,15 +33,16 @@ class HomeController extends Controller
         // Mail::send('email.notify',[], function($message){
         //     $message->to('himanshuagrawal1998@gmail.com')->from('himanshuagrawal1998@gmail.com', 'Sukhmani')->subject("Stock Updated");
         // });           
-          $categories = Category::get();
-          foreach ($categories as $key => $category) {
-            $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
-            $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
-          }
-          $sites=Site::where('status',1)->get();
-          foreach ($sites as $key => $site) {
-              $sites[$key]->amount = SiteStock::where('site_id', $site->id)->sum('amount');
-          }
+          // $categories = Category::get();
+          // foreach ($categories as $key => $category) {
+          //   $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
+          //   $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
+          // }
+          // $sites=Site::where('status',1)->get();
+          // foreach ($sites as $key => $site) {
+          //     $sites[$key]->amount = SiteStock::where('site_id', $site->id)->sum('amount');
+          // }
         return view('home',compact('categories', 'sites'));
+        return view('home');
     }
 }
