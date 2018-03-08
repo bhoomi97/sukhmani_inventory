@@ -177,6 +177,30 @@
                 }
             });
         });
+
+
+        $(document).on("change", "#category", function(){
+            category = $(this).val();
+            c = 1;
+            $.ajax({
+                type: 'GET',
+                url: 'getsubcategory',
+                data: {
+                    'category' : category,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("#subcategory").html('');
+                    data[0].forEach(function(d){
+                        $("#subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        
         // $(document).on("click", ".dropdown", function(){
         //     wid = $(this).width();
         //     console.log(wid);

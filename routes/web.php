@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('site', 'SiteController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('subcategory', 'SubCategoryController');
+	Route::resource('vendor', 'VendorController');
 	Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
 	Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
 	Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
