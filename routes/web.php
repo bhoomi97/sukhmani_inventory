@@ -20,6 +20,7 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
 	Route::resource('site', 'SiteController');
+	Route::resource('category', 'CategoryController');
 	Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
 	Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
 	Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
