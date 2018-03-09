@@ -21,7 +21,7 @@
                         </div>
                     @endif
                       <center><div id="chart_div"></div></center>
-                      <table class="table table-bordered" id="warehouse-stock-table" width="100%">
+                      <table class="table table-bordered warehousestock" id="warehouse-stock-table" width="100%">
                         <thead>
                           <tr>
                             <th>Category</th>
