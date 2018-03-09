@@ -36,4 +36,5 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
 	Route::get('/getspecificationrates', 'CategoryController@getSpecificationRates')->name('getspecificationrates');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
+	Route::get('datatables/warehouseStock', 'WarehouseController@warehouseStock')->name('datatables.warehouseStock');
 });
