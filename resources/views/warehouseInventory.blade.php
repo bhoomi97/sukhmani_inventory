@@ -16,27 +16,43 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control subcategory" name="subcategories[]">\
+                                <select class="form-control subcategory" id="warehouse_subcat" name="subcategories[]">\
                                     <option disabled="true">Select Category</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control costing" name="costing[]" step="0.01" >\
+                                <select class="form-control vendor" id="warehouse_vendor" name="vendors[]">\
+                                    <option disabled="true">Select SubCategory</option>\
+                                </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity" name="quantity[]" step="1">\
+                                <select class="form-control specification" id="warehouse_specification" name="specifications[]">\
+                                    <option disabled="true">Select Vendor</option>\
+                                </select>\
+                            </td>\
+                            <td>\
+                                <input type="number" class="form-control costing" name="costing[]"  step="0.01">\
+                            </td>\
+                            <td>\
+                                <input type="number" class="form-control quantity" name="quantity[]" step="1" >\
                             </td>\
                             <td>\
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" >\
                             </td>\
                             <td>\
+                                <input type="text" class="form-control purchased_by" name="purchased_by[]">\
+                            </td>\
+                            <td>\
+                                <input type="text" class="form-control recieved_by" name="recieved_by[]">\
+                            </td>\
+                            <td>\
                                 <input type="test" class="form-control comment" name="comment[]">\
                             </td>\
                             <td>\
-                                <input type="date" class="form-control" name="date[]" required="true">\
+                                <input type="date" id="datepicker" class="form-control" name="date[]" required="true">\
                             </td>\
                             <td>\
-                                <img src="{{ asset('/close.png') }}" width="30px;" class="deleteRow">\
+                                <img src="{{ asset('/close.png') }}" width="30px;" style="cursor: pointer;" class="deleteRow">\
                             </td>\
                         </tr>\
             ')
