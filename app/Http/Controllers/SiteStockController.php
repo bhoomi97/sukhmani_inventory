@@ -9,8 +9,10 @@ use App\Site;
 use App\SiteStock;
 use App\LogSiteStock;
 use App\WarehouseStock;
+use App\Specification;
 use Auth;
 use AWS;
+use Log;
 
 class SiteStockController extends Controller
 {
@@ -23,64 +25,53 @@ class SiteStockController extends Controller
 	}
 
 	public function save(Request $request){
-		$categories = $request->subcategories;
-		$sites = $request->site;
-		$costings = $request->costing;
-		$quantities = $request->quantity;
-		$amounts = $request->amount;
-		$comments = $request->comment;         
-		$dates = $request->date;
+        $specifications = $request->specifications;
+        $sites = $request->sites;
+        $quantities = $request->quantity;
+        $costings = $request->costings;
+        $amounts = $request->amount;
+        $delivered_to = $request->delivered_to;
+        $delivered_by = $request->delivered_by;
+        $dates = $request->date;
+		$comments = $request->comment;
 		$errors = [];
-		foreach ($categories as $key => $category) {
-			$SubCategory = SubCategory::where('id',$categories[$key])->get();
-			if(count($SubCategory) == 0)
+		foreach ($specifications as $key => $spec) {
+			$spec1 = Specification::where('id',$specifications[$key])->get();
+			if(count($spec1) == 0)
 				continue;
-			$stocks = WarehouseStock::where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
-			if(count($stocks)==0)
-				continue;
-			$stock = $stocks[0];
-			if($quantities[$key]>$stock->qty){
-				array_push($errors, [$SubCategory[0]->subcategory,$quantities[$key]]);
+			Log::info($spec);
+			$stocks = WarehouseStock::where('specification_id',$specifications[$key])->where('rate',$costings[$key])->sum('qty');
+			Log::info($costings[$key]);
+				Log::info($stocks);
+			if($quantities[$key] > $stocks){
+				array_push($errors, [$spec1[0]->specification,$quantities[$key]]);
 				continue;
 			}
-
-			$stock->rate = $costings[$key];
-			$stock->qty -= $quantities[$key];
-			$stock->amount -= $costings[$key] * $quantities[$key];
-			$stock->date = $dates[$key];
-			$stock->user_id = Auth::user()->id;
-			$stock->save();
-
-			$stock = SiteStock::where('site_id',$sites[$key])->where('subcategory_id',$categories[$key])->where('rate',$costings[$key])->get();
-			if(count($stock)){
-				$stock = $stock[0];
-				$stock->site_id += $sites[$key];
-				$stock->qty += $quantities[$key];
-				$stock->amount += $costings[$key] * $quantities[$key];
-				$stock->comment = $comments[$key];
-				$stock->date = $dates[$key];
-				$stock->user_id = Auth::user()->id;
-			}else{
-				$stock = new SiteStock;
-				$stock->site_id = $sites[$key];
-				$stock->subcategory_id = $categories[$key];
-				$stock->rate = $costings[$key];
-				$stock->qty = $quantities[$key];
-				$stock->amount = $costings[$key] * $quantities[$key];
-				$stock->comment = $comments[$key];
-				$stock->date = $dates[$key];
-				$stock->user_id = Auth::user()->id;
+			$left_qty = $quantities[$key];
+			while($left_qty>0){
+				$stocks1 = WarehouseStock::where('specification_id',$specifications[$key])->where('rate',$costings[$key])->first();
+				if($stocks1->qty <= $left_qty){
+					$left_qty-=$stocks1->qty;
+					$stocks1->delete();
+					Log::info("#");
+				}else{
+					$q = $stocks1->qty - $left_qty;
+					$stocks1->update(['qty' => $q]);
+					Log::info("$");
+					break;
+				}
 			}
-			$stock->save();
 
-			$stock = new LogSiteStock;
-			$stock->site_id += $sites[$key];
-			$stock->subcategory_id = $categories[$key];
+			$stock = new SiteStock;
+			$stock->site_id = $sites[$key];
+			$stock->specification_id = $specifications[$key];
 			$stock->rate = $costings[$key];
 			$stock->qty = $quantities[$key];
 			$stock->amount = $costings[$key] * $quantities[$key];
 			$stock->comment = $comments[$key];
 			$stock->date = $dates[$key];
+			$stock->delivered_by = $delivered_by[$key];
+			$stock->delivered_to = $delivered_to[$key];
 			$stock->user_id = Auth::user()->id;
 			$stock->save();
 		}

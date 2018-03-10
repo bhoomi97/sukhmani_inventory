@@ -31,8 +31,8 @@ class CategoryController extends Controller
         $specification_id = $request->specification;
         $costing = $request->costing;
         $c = $request->c;
-        $rates = WarehouseStock::where('specification_id',$specification_id)->where('rate',$costing)->get();
-        return [$rates[0]->qty,$c];       
+        $rates = WarehouseStock::where('specification_id',$specification_id)->where('rate',$costing)->sum('qty');
+        return [$rates,$c];       
     }
 
     public function getVendor(Request $request){
@@ -63,10 +63,15 @@ class CategoryController extends Controller
     public function getSpecificationRatesfortosite(Request $request){
         $specification_id = $request->specification;
         $c = $request->c;
-        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->select('rate','qty')->get();
-        if(count($rate) ==0)
-            $rate = "";
-        return [$rate,$c];
+
+        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->pluck('rate')->toArray();
+        $rate = (array_unique($rate));
+        $arr = [];
+        foreach ($rate as $r) {
+            $q = WarehouseStock::where('specification_id',$specification_id)->where('rate',$r)->sum('qty');
+            array_push($arr, [$r, $q]);
+        }
+        return [$arr,$c];
     }
 
     /**

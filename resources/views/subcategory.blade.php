@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Vendor</div>
+                <div class="card-header">Sub Categories</div>
 
                 <div class="card-body">
                     @if(Auth::user()->role == 1)

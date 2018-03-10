@@ -8,7 +8,7 @@
         $("#table").append('\
                         <tr count='+count+'>\
                             <td>\
-                                <select class="form-control category" name="categories[]" required="true">\
+                                <select class="form-control category" name="categories[]">\
                                     <option >Select Category</option>\
                                     @foreach($cats as $cat)\
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>\
@@ -16,36 +16,53 @@
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control subcategory" name="subcategories[]" required="true">\
+                                <select class="form-control subcategory" id="warehouse_subcat" name="subcategories[]">\
                                     <option disabled="true">Select Category</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control" name="site[]" required="true">\
+                                <select class="form-control vendor" id="warehouse_vendor" name="vendors[]">\
+                                    <option disabled="true">Select SubCategory</option>\
+                                </select>\
+                            </td>\
+                            <td>\
+                                <select class="form-control specification" id="warehouse_specification" \name="specifications[]">\
+                                    <option disabled="true">Select Vendor</option>\
+                                </select>\
+                            </td>\
+                            <td>\
+                                <select class="form-control site" id="site_list" name="sites[]">\
                                     @foreach($sites as $site)\
                                         <option value="{{$site->id}}">{{$site->site_name}}</option>\
                                     @endforeach\
                                 </select>\
                             </td>\
                             <td>\
-                                <select class="form-control costing " name="costing[]" required="true">\
-                                    <option disabled="true">Select Sub Category</option>\
-                                </select>\
+                                <select class="form-control costing" id="warehouse_costing" name="costings[]">\
+                                    <option disabled="true">Select Specification</option>\
+                                </select>                                \
                             </td>\
                             <td>\
-                                <input type="number" class="form-control quantity " name="quantity[]" step="0"  required="true">\
+                                <input type="number" class="form-control quantity" name="quantity[]" step="1" >\
+                                <span class="quan_max"></span>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">\
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" >\
                             </td>\
                             <td>\
-                                <input type="text" class="form-control comment" name="comment[]">\
+                                <input type="text" class="form-control delivered_to" name="delivered_to[]">\
                             </td>\
                             <td>\
-                                <input type="date" class="form-control" name="date[]" required="true">\
+                                <input type="text" class="form-control delivered_by" name="delivered_by[]">\
                             </td>\
                             <td>\
-                                <img src="{{ asset('/close.png') }}" width="30px;" class="deleteRow">\
+                                <input type="test" class="form-control comment" name="comment[]">\
+                            </td>\
+                            <td>\
+                                <input type="date" id="datepicker" class="form-control" name="date[]" required="true">\
+                            </td>\
+                            <td>\
+                                <img src="{{ asset('/close.png') }}" width="30px;" style="cursor: pointer;" class="deleteRow">\
                             </td>\
                         </tr>\
             ')
@@ -192,12 +209,12 @@
                         return;
                     }
                     $("tr[count='"+data[1]+"']").find(".costing").html('');
-                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0][0].qty);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0][0][1]);
                     console.log("#"+data[0][0].qty);
-                    $("tr[count='"+data[1]+"']").find(".quan_max").html('max: '+data[0][0].qty);
-                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max: '+data[0][0].qty);
+                    $("tr[count='"+data[1]+"']").find(".quan_max").html('max: '+data[0][0][1]);
+                    $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max: '+data[0][0][1]);
                     data[0].forEach(function(d){
-                        $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d.rate+'>'+d.rate +'</option>');
+                        $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d[0]+'>'+d[0] +'</option>');
                         console.log(d);
                     })
                 }
