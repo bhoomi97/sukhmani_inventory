@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('category', 'CategoryController');
 	Route::resource('subcategory', 'SubCategoryController');
 	Route::resource('vendor', 'VendorController');
+	Route::get('/vendor/stock', 'VendorController@stock')->name('vendor.stock');
 	Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
 	Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
 	Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
@@ -35,6 +36,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/getspecification', 'CategoryController@getSpecification')->name('getspecification');
 	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
 	Route::get('/getspecificationrates', 'CategoryController@getSpecificationRates')->name('getspecificationrates');
+	Route::get('/getspecificationratesfortosite', 'CategoryController@getSpecificationRatesfortosite')->name('getspecificationratesfortosite');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
 	Route::get('datatables/warehouseStock', 'WarehouseController@warehouseStock')->name('datatables.warehouseStock');
 });

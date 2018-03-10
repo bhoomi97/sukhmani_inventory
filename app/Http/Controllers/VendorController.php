@@ -110,4 +110,16 @@ class VendorController extends Controller
     {
         //
     }
+
+    public function stock() {
+        if(Auth::user()->role != 1)
+            abort('404');
+        $vendors = Vendor::get();
+        foreach($vendors as $key => $vendor){
+            $specs = Specification::where('vendor_id', $vendor->id)->get();
+            foreach ($specs as $key1 => $spec) {
+                // $stock = WarehouseStock::where('specification_id', $spec->id)
+            }
+        }
+    }
 }

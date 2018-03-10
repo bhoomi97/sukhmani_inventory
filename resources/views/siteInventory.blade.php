@@ -88,56 +88,76 @@
                         <tr>
                             <th style="width: 40%;">Category</th>
                             <th style="width: 19%;">Sub Category</th>
-                            <th style="width: 20%;">To Site</th>
-                            <th style="width: 18%;">Rate/Unit(Rs)</th>
-                            <th style="width: 18%;">Quantity</th>
-                            <th style="width: 20% !important;">Total Cost(Rs)</th>
-                            <th style="width: 12%;">Comment</th>
-                            <th style="width: 15%;">Date</th>
+                            <th style="width: 19%;">Vendor</th>
+                            <th style="width: 19%;">Specification</th>
+                            <th style="width: 19%;">To Site</th>
+                            <th style="width: 15%;" id="rate">Rate/Unit(Rs)</th>
+                            <th style="width: 12%;">Quantity</th>
+                            <th style="width: 15%;">Total Cost(Rs)</th>
+                            <th style="width: 15%;">Delivered To</th>
+                            <th style="width: 15%;">Delivered By</th>
+                            <th style="width: 15%;">Comment</th>
+                            <th style="width:10%;">Date</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table">
                         <tr count="0">
                             <td>
-                                <select class="form-control category" name="categories[]" required="true">
-                                    <option disabled="" selected="">Select Category</option>
+                                <select class="form-control category" name="categories[]">
+                                    <option >Select Category</option>
                                     @foreach($cats as $cat)
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control subcategory" id="site_subcat" name="subcategories[]" required="true">
+                                <select class="form-control subcategory" id="warehouse_subcat" name="subcategories[]">
                                     <option disabled="true">Select Category</option>
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control" name="site[]" required="true">
+                                <select class="form-control vendor" id="warehouse_vendor" name="vendors[]">
+                                    <option disabled="true">Select SubCategory</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control specification" id="warehouse_specification" name="specifications[]">
+                                    <option disabled="true">Select Vendor</option>
+                                </select>
+                            </td>
+                            <td>
+                                <select class="form-control site" id="site_list" name="sites[]">
                                     @foreach($sites as $site)
                                         <option value="{{$site->id}}">{{$site->site_name}}</option>
                                     @endforeach
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control costing " name="costing[]" required="true">
-                                    <option disabled="true">Select Sub Category</option>
-                                </select>
+                                <select class="form-control costing" id="warehouse_costing" name="costings[]">
+                                    <option disabled="true">Select Specification</option>
+                                </select>                                
                             </td>
                             <td>
-                                <input type="number" class="form-control quantity " name="quantity[]" step="0" required="true">
+                                <input type="number" class="form-control quantity" name="quantity[]" step="1" >
                             </td>
                             <td>
-                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="true">
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" >
                             </td>
                             <td>
-                                <input type="text" class="form-control comment" name="comment[]">
+                                <input type="text" class="form-control delivered_to" name="delivered_to[]">
                             </td>
                             <td>
-                                <input type="date" class="form-control" name="date[]" required="true">
+                                <input type="text" class="form-control delivered_by" name="delivered_by[]">
                             </td>
                             <td>
-                                <img src="{{ asset('/close.png') }}" width="30px;" class="deleteRow">
+                                <input type="test" class="form-control comment" name="comment[]">
+                            </td>
+                            <td>
+                                <input type="date" id="datepicker" class="form-control" name="date[]" required="true">
+                            </td>
+                            <td>
+                                <img src="{{ asset('/close.png') }}" width="30px;" style="cursor: pointer;" class="deleteRow">
                             </td>
                         </tr>
                     </tbody>
@@ -154,14 +174,14 @@
 @section('script')
 <script type="text/javascript">
 
-        $(document).on("change", ".subcategory", function(){
-            subcategory = $(this).val();
+        $(document).on("change", ".specification", function(){
+            specification = $(this).val();
             c = $(this).closest('tr').attr('count');
             $.ajax({
                 type: 'GET',
-                url: 'getsubcategoryrates',
+                url: 'getspecificationratesfortosite',
                 data: {
-                    'subcategory' : subcategory,
+                    'specification' : specification,
                     'c' : c
                 },
                 success: function(data){
@@ -184,12 +204,12 @@
         $(document).on("change", ".costing", function(){
             costing = $(this).val();
             c = $(this).closest('tr').attr('count');
-            subcategory = $("tr[count='"+c+"']").find(".subcategory").val();
+            specification = $("tr[count='"+c+"']").find(".specification").val();
             $.ajax({
                 type: 'GET',
                 url: 'getmaxquantity',
                 data: {
-                    'subcategory' : subcategory,
+                    'specification' : specification,
                     'costing' : costing,
                     'c' : c
                 },

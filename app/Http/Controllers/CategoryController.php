@@ -28,10 +28,10 @@ class CategoryController extends Controller
     }
 
     public function getmaxquantity(Request $request){
-        $subcategory_id = $request->subcategory;
+        $specification_id = $request->specification;
         $costing = $request->costing;
         $c = $request->c;
-        $rates = WarehouseStock::where('subcategory_id',$subcategory_id)->where('rate',$costing)->get();
+        $rates = WarehouseStock::where('specification_id',$specification_id)->where('rate',$costing)->get();
         return [$rates[0]->qty,$c];       
     }
 
@@ -57,6 +57,15 @@ class CategoryController extends Controller
             $rate = "";
         else
             $rate = $rate[0]->rate;
+        return [$rate,$c];
+    }
+    
+    public function getSpecificationRatesfortosite(Request $request){
+        $specification_id = $request->specification;
+        $c = $request->c;
+        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->select('rate')->get();
+        if(count($rate) ==0)
+            $rate = "";
         return [$rate,$c];
     }
 
