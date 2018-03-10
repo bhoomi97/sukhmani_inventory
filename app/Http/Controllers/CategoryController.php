@@ -63,7 +63,7 @@ class CategoryController extends Controller
     public function getSpecificationRatesfortosite(Request $request){
         $specification_id = $request->specification;
         $c = $request->c;
-        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->select('rate')->get();
+        $rate = WarehouseStock::where('specification_id',$specification_id)->orderBy('created_at')->select('rate','qty')->get();
         if(count($rate) ==0)
             $rate = "";
         return [$rate,$c];

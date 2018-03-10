@@ -140,6 +140,7 @@
                             </td>
                             <td>
                                 <input type="number" class="form-control quantity" name="quantity[]" step="1" >
+                                <span class="quan_max"></span>
                             </td>
                             <td>
                                 <input type="number" class="form-control amount" name="amount[]" step="0.01" >
@@ -192,6 +193,8 @@
                     }
                     $("tr[count='"+data[1]+"']").find(".costing").html('');
                     $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0][0].qty);
+                    console.log("#"+data[0][0].qty);
+                    $("tr[count='"+data[1]+"']").find(".quan_max").html('max: '+data[0][0].qty);
                     $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max: '+data[0][0].qty);
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".costing").append('<option value='+d.rate+'>'+d.rate +'</option>');
@@ -216,6 +219,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".quantity").attr('max',data[0]);
+                    $("tr[count='"+data[1]+"']").find(".quan_max").html('max: '+data[0]);
                     $("tr[count='"+data[1]+"']").find(".quantity").attr('placeholder','max:'+data[0]);
                 }
             });

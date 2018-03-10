@@ -152,6 +152,14 @@
             $(this).closest('tr').find('.amount').val(costing*quantity);
         });
 
+        $(document).on("change", ".costing", function(){
+            costing = $(this).val();
+            quantity = $(this).closest('tr').find('.quantity').val();
+            console.log(costing);
+            console.log(quantity);
+            $(this).closest('tr').find('.amount').val(costing*quantity);
+        });
+
         $(document).on("keyup", ".quantity", function(){
             quantity = $(this).val();
             costing = $(this).closest('tr').find('.costing').val();
