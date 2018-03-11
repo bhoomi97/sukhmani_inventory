@@ -39,4 +39,5 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/getspecificationratesfortosite', 'CategoryController@getSpecificationRatesfortosite')->name('getspecificationratesfortosite');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
 	Route::get('datatables/warehouseStock', 'WarehouseController@warehouseStock')->name('datatables.warehouseStock');
+	Route::get('siteList', 'SiteController@siteList')->name('siteList');
 });

@@ -126,4 +126,9 @@ class SiteController extends Controller
         else
             abort('404');
     }
+
+    public function siteList() {
+        $sites = Site::where('status',1)->get();
+        return view('siteList',compact('sites'));
+    }
 }
