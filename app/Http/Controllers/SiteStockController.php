@@ -21,7 +21,8 @@ class SiteStockController extends Controller
 		$cats = Category::get();
 		$sites = Site::where('status',1)->get();
 		$title = "inventory";
-		return view('siteInventory', compact('categories','title','cats','sites'));    	
+		$s = 0;
+		return view('siteInventory', compact('categories','title','cats','sites','s'));    	
 	}
 
 	public function save(Request $request){
@@ -86,7 +87,8 @@ class SiteStockController extends Controller
 			$args['PhoneNumber'] = "+91-". $mobile;
 			$result = $sns->publish($args);
 		}
-		return redirect('/site');
+		$s=1;
+		return redirect('/siteInventory');
 	}
 
 }

@@ -86,7 +86,7 @@
                 </div>
             </div>
         @endif
-        @if(session('success'))
+        @if($s==1)
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="alert alert-success">
@@ -94,6 +94,7 @@
                     </div>
                 </div>
             </div>
+            <?php $s=0; ?>
         @endif
         <?php session()->forget('errors');session()->forget('success'); ?>
         <h2 id="site_head" style="margin: auto;">To Site</h2>

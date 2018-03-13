@@ -73,7 +73,7 @@
             </h3>
         </div>
         <div class="row" style="width: 100%; text-align: center;">
-            <h2 id="warehouse_head" style="margin: auto;">Warehouse Inventory</h2>
+            <h2 id="warehouse_head" style="margin: auto;">Warehouse Stock</h2>
             
         </div>
         <form method="POST" action="{{route('saveWarehouseInventory')}}">
