@@ -63,6 +63,9 @@
                                             Manage Sites
                                         </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ route('vendor.index') }}">
+                                        Vendors
+                                    </a>
                                 </div>
                             </li>
                             @if(Auth::user()->role ==1)

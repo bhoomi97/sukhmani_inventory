@@ -88,6 +88,7 @@ class SiteStockController extends Controller
 			$result = $sns->publish($args);
 		}
 		$s=1;
+		
 		return redirect('/siteInventory');
 	}
 
