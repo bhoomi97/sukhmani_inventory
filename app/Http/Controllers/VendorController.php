@@ -7,6 +7,7 @@ use App\Category;
 use App\SubCategory;
 use App\Vendor;
 use App\Specification;
+use App\WarehouseStock;
 use Auth;
 
 class VendorController extends Controller
@@ -111,15 +112,11 @@ class VendorController extends Controller
         //
     }
 
-    public function stock() {
+    public function stock(Request $request, $id) {
         if(Auth::user()->role != 1)
             abort('404');
-        $vendors = Vendor::get();
-        foreach($vendors as $key => $vendor){
-            $specs = Specification::where('vendor_id', $vendor->id)->get();
-            foreach ($specs as $key1 => $spec) {
-                // $stock = WarehouseStock::where('specification_id', $spec->id)
-            }
-        }
+        $specs = Specification::where('vendor_id',$id)->pluck('id')->toArray();
+        $stocks = WarehouseStock::whereIn('specification_id',$specs)->get();
+        return view('vendorStock',compact('stocks'));
     }
 }
