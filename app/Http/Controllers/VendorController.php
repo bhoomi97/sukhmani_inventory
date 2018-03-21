@@ -128,17 +128,19 @@ class VendorController extends Controller
     public function stock(Request $request, $id) {
         if(Auth::user()->role != 1)
             abort('404');
+        $vendor = Vendor::where('id',$id)->get();
         $specs = Specification::where('vendor_id',$id)->pluck('id')->toArray();
         $stocks = WarehouseStock::whereIn('specification_id',$specs)->get();
-        return view('vendorStock',compact('stocks'));
+        return view('vendorStock',compact('stocks','vendor'));
     }
 
     public function sitestock(Request $request, $id) {
         if(Auth::user()->role != 1)
             abort('404');
+        $vendor = Vendor::where('id',$id)->get();
         $specs = Specification::where('vendor_id',$id)->pluck('id')->toArray();
         $stocks = SiteStock::whereIn('specification_id',$specs)->with('site')->get();
-        return view('vendorSiteStock',compact('stocks'));
+        return view('vendorSiteStock',compact('stocks','vendor'));
     }
 
     public function stockIndex()
