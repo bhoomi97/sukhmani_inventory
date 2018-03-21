@@ -141,6 +141,24 @@
             name: "Worksheet Name",
             filename: "Site Stock"+date+".xls" //do not include extension
           }); 
+        });
+        $("#vendorSiteStock").click(function(){
+            date = new Date();
+          $(".vendorSiteStock").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: "Vendor Site Stock"+date+".xls" //do not include extension
+          }); 
+        }); 
+        $("#vendorWarehouseStock").click(function(){
+            date = new Date();
+          $(".vendorWarehouseStock").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: "Vendor Warehouse Stock"+date+".xls" //do not include extension
+          }); 
         }); 
 
         $(document).on("click", ".deleteRow", function(){

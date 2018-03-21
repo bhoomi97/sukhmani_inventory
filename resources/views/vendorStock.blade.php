@@ -20,7 +20,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                      <table class="table table-bordered " id="" width="100%">
+                      <table class="table table-bordered vendorWarehouseStock" id="" width="100%">
                         <thead>
                           <tr>
                             <th>Category</th>
@@ -48,7 +48,7 @@
                       </table>
 
                     <br>
-                    <center><a href="" id="" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="#" id="vendorWarehouseStock" class="btn btn-primary">Generate Report</a></center>
                 </div>
             </div>
         </div>

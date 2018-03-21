@@ -50,7 +50,7 @@
                           </tbody>
                         </table>
                     <br>
-                    <center><a href="" id="siteexport" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="#" id="siteexport" class="btn btn-primary">Generate Report</a></center>
 
                 </div>
             </div>
