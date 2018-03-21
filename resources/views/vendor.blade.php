@@ -40,7 +40,8 @@
                                   <h5 class="mb-0">
                                     <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$vendor->id}}" id="stock_head" aria-expanded="true" aria-controls="collapse{{$vendor->id}}">
                                         {{$vendor->vendor}}
-                                        <span style="float: right;"><a href="{{URL::to('vendor/stock/'.($vendor->id))}}">Stocks</a></span>
+                                        <span style="float: right;"><a href="{{URL::to('vendor/stock/'.($vendor->id))}}">Warehouse Stocks</a></span>
+                                        <span style="float: right;"><a href="{{URL::to('vendor/site/stock/'.($vendor->id))}}">Site Stocks</a></span>
                                     </a>
                                   </h5>
                                 </div>

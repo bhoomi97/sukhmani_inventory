@@ -8,6 +8,7 @@ use App\SubCategory;
 use App\Vendor;
 use App\Specification;
 use App\WarehouseStock;
+use App\SiteStock;
 use Auth;
 
 class VendorController extends Controller
@@ -118,5 +119,13 @@ class VendorController extends Controller
         $specs = Specification::where('vendor_id',$id)->pluck('id')->toArray();
         $stocks = WarehouseStock::whereIn('specification_id',$specs)->get();
         return view('vendorStock',compact('stocks'));
+    }
+
+    public function sitestock(Request $request, $id) {
+        if(Auth::user()->role != 1)
+            abort('404');
+        $specs = Specification::where('vendor_id',$id)->pluck('id')->toArray();
+        $stocks = SiteStock::whereIn('specification_id',$specs)->with('site')->get();
+        return view('vendorSiteStock',compact('stocks'));
     }
 }

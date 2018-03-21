@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" id="warehouse_stock">Vendor Warehouse Stock</div>
+                <div class="card-header" id="warehouse_stock">Vendor Site Stock</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,6 +23,7 @@
                       <table class="table table-bordered " id="" width="100%">
                         <thead>
                           <tr>
+                            <th>Site</th>
                             <th>Category</th>
                             <th>SubCategory</th>
                             <th>Specification</th>
@@ -35,6 +36,7 @@
                         <tbody>
                         	@foreach($stocks as $stock)
                         		<tr>
+                                    <th>{{$stock->site->site_name}}</th>
                         			<th>{{$stock->specification->vendor->subcategory->category->category}}</th>
                         			<th>{{$stock->specification->vendor->subcategory->subcategory}}</th>
                         			<th>{{$stock->specification->specification}}</th>
