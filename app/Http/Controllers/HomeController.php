@@ -36,7 +36,7 @@ class HomeController extends Controller
           $categories = Category::get();
           foreach ($categories as $key => $category) {
             $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
-            $categories[$key]->amount = warehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
+            $categories[$key]->amount = WarehouseStock::whereIn('subcategory_id',$subcategories)->sum('amount');
           }
           $sites=Site::where('status',1)->get();
           foreach ($sites as $key => $site) {
