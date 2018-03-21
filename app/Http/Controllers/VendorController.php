@@ -10,6 +10,7 @@ use App\Specification;
 use App\WarehouseStock;
 use App\SiteStock;
 use Auth;
+use AWS;
 
 class VendorController extends Controller
 {
