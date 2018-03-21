@@ -13,78 +13,39 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="row"><center style="margin: auto;"><h4>Site Stock (Total Amount: Rs.{{$total}})</h4></center></div>
+                    <div class="row"><center style="margin: auto;"><h4>Site Stock</h4></center></div>
                       <center><div id="chart_div"></div></center>
-                    <div id="accordion" role="tablist" aria-multiselectable="true">
-                        @foreach($categories as $category)
-                            @if(count($category->stock))
-                              <div class="card">
-                                <div class="card-header" role="tab" id="heading{{$category->id}}">
-                                  <h5 class="mb-0">
-                                    <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" aria-expanded="true" aria-controls="collapse{{$category->id}}">
-                                        {{$category->category}}<span style="float: right;"> (Total Amt: Rs.{{$category->amount}})</span>
-                                    </a>
-                                  </h5>
-                                </div>
-
-                                <div id="collapse{{$category->id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$category->id}}">
-                                  <div class="card-block">
-                                    <table class="table" id="stock_table">
-                                        <thead>
-                                            <tr>
-                                                <th>Sub Category</th>
-                                                <th>Rate</th>
-                                                <th>Quantity</th>
-                                                <th>Amount</th>
-                                                <th>Comment</th>
-                                                <th>Date</th>
-                                            </tr>
-                                        </thead>                            
-                                        <tbody>
-                                            @foreach($category->stock as $stock)
-                                                <tr>
-                                                    <td>{{$stock->subcategory->subcategory}}</td>
-                                                    <td>{{$stock->rate}}</td>
-                                                    <td>{{$stock->qty}}</td>
-                                                    <td>{{$stock->amount}}</td>
-                                                    <td>{{$stock->comment}}</td>
-                                                    <td>{{$stock->date}}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-                            @endif
-                        @endforeach
-                      
-                    </div>
-                        <table class="sitestock" style="display: none;">
+                        <table class="sitestock table">
                           <thead>
                               <tr>
+                                  <th>Category</th>
                                   <th>Sub Category</th>
+                                  <th>Vendor</th>
+                                  <th>Specification</th>
                                   <th>Rate</th>
                                   <th>Quantity</th>
                                   <th>Amount</th>
+                                  <th>Delivered To</th>
+                                  <th>Delivered By</th>
                                   <th>Comment</th>
                                   <th>Date</th>
                               </tr>
                           </thead>                            
                           <tbody>
-                            @foreach($categories as $category)
-                              @if(count($category->stock))
-                                @foreach($category->stock as $stock)
+                            @foreach($stocks as $stock)
                                     <tr>
-                                        <td>{{$stock->subcategory->subcategory}}</td>
+                                        <td>{{$stock->specification->vendor->subcategory->category->category}}</td>
+                                        <td>{{$stock->specification->vendor->subcategory->subcategory}}</td>
+                                        <td>{{$stock->specification->vendor->vendor}}</td>
+                                        <td>{{$stock->specification->specification}}</td>
                                         <td>{{$stock->rate}}</td>
                                         <td>{{$stock->qty}}</td>
                                         <td>{{$stock->amount}}</td>
+                                        <td>{{$stock->delivered_to}}</td>
+                                        <td>{{$stock->delivered_by}}</td>
                                         <td>{{$stock->comment}}</td>
                                         <td>{{$stock->date}}</td>
                                     </tr>
-                                @endforeach
-                              @endif
                             @endforeach
                           </tbody>
                         </table>
@@ -96,6 +57,7 @@
         </div>
     </div>
 </div>
+@if(0)
   <script type="text/javascript">
       document.addEventListener('DOMContentLoaded',function(){
 
@@ -131,5 +93,5 @@
             }        
       })
   </script>
-
+@endif
 @endsection

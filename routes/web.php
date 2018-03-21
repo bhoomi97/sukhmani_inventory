@@ -22,6 +22,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('site', 'SiteController');
 	Route::resource('category', 'CategoryController');
 	Route::resource('subcategory', 'SubCategoryController');
+	Route::resource('vendor', 'VendorController');
+	Route::resource('labsubcategory', 'LabSubcategoriesController');
+	Route::get('/vendor/stock/{id}', 'VendorController@stock');
+	Route::get('/vendor/site/stock/{id}', 'VendorController@siteStock');
 	Route::get('warehouseStock', 'WarehouseController@index')->name('warehouseStock');
 	Route::get('logwarehouseStock', 'LogWarehouseController@index')->name('logwarehouseStock');
 	Route::get('warehouseInventory', 'WarehouseController@inventory')->name('warehouseInventory');
@@ -30,6 +34,12 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('siteInventory', 'SiteStockController@save')->name('siteInventory');
 	Route::get('logsitestock', 'LogStockController@index')->name('logsitestock');
 	Route::get('/getsubcategory', 'CategoryController@getSubCategory')->name('getsubcategory');
+	Route::get('/getvendor', 'CategoryController@getVendor')->name('getvendor');
+	Route::get('/getspecification', 'CategoryController@getSpecification')->name('getspecification');
 	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
+	Route::get('/getspecificationrates', 'CategoryController@getSpecificationRates')->name('getspecificationrates');
+	Route::get('/getspecificationratesfortosite', 'CategoryController@getSpecificationRatesfortosite')->name('getspecificationratesfortosite');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
+	Route::get('datatables/warehouseStock', 'WarehouseController@warehouseStock')->name('datatables.warehouseStock');
+	Route::get('siteList', 'SiteController@siteList')->name('siteList');
 });

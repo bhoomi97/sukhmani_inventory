@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class WarehouseStock extends Model
 {
 	protected $fillable = [
-       'id', 'subcategory_id', 'rate', 'qty', 'amount', 'comment'
+       'id', 'specification_id', 'rate', 'qty', 'amount', 'comment', 'purchased_by', 'recieved_by'
     ];
 
-    public function subcategory(){
-        return $this->hasOne('App\SubCategory','id','subcategory_id');    	
+    public function specification(){
+        return $this->hasOne('App\Specification','id','specification_id');    	
     }
     
     public function user(){

@@ -64,14 +64,8 @@ class SiteController extends Controller
         if(Auth::user()->role!=1)
             abort('404');
             $site = Site::where('id',$id)->first();
-        $total = SiteStock::where('site_id',$id)->sum('amount');
-          $categories = Category::get();
-          foreach ($categories as $key => $category) {
-            $subcategories = SubCategory::where('category_id',$category->id)->pluck('id')->toArray();
-            $categories[$key]->stock = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->where('qty','!=',0)->get();
-            $categories[$key]->amount = SiteStock::where('site_id',$id)->whereIn('subcategory_id',$subcategories)->sum('amount');
-          }
-        return view('siteStock',compact('categories','site','total'));
+            $stocks = SiteStock::where('site_id',$id)->orderBy('created_at')->get();
+        return view('siteStock',compact('site','stocks'));
     }
 
     /**
@@ -125,5 +119,10 @@ class SiteController extends Controller
         }
         else
             abort('404');
+    }
+
+    public function siteList() {
+        $sites = Site::where('status',1)->get();
+        return view('siteList',compact('sites'));
     }
 }

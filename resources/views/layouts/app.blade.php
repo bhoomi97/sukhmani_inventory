@@ -19,6 +19,7 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -62,6 +63,9 @@
                                             Manage Sites
                                         </a>
                                     @endif
+                                    <a class="dropdown-item" href="{{ route('vendor.index') }}">
+                                        Vendors
+                                    </a>
                                 </div>
                             </li>
                             @if(Auth::user()->role ==1)
@@ -74,8 +78,11 @@
                                         <a class="dropdown-item" href="{{ route('warehouseStock') }}">
                                             WareHouse
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('site.index') }}">
+                                        <a class="dropdown-item" href="{{ route('siteList') }}">
                                             Site Report
+                                        </a>
+                                        <a class="dropdown-item" href="{{ route('vendor.index') }}">
+                                            Vendor Report
                                         </a>
                                     </div>
                                 </li>
@@ -105,7 +112,6 @@
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 
     <!-- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -149,6 +155,14 @@
             $(this).closest('tr').find('.amount').val(costing*quantity);
         });
 
+        $(document).on("change", ".costing", function(){
+            costing = $(this).val();
+            quantity = $(this).closest('tr').find('.quantity').val();
+            console.log(costing);
+            console.log(quantity);
+            $(this).closest('tr').find('.amount').val(costing*quantity);
+        });
+
         $(document).on("keyup", ".quantity", function(){
             quantity = $(this).val();
             costing = $(this).closest('tr').find('.costing').val();
@@ -157,6 +171,7 @@
             $(this).closest('tr').find('.amount').val(costing*quantity);
         });
 
+        // for inventory
         $(document).on("change", ".category", function(){
             category = $(this).val();
             c = $(this).closest('tr').attr('count');
@@ -170,6 +185,7 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".subcategory").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
                         console.log(d);
@@ -177,6 +193,94 @@
                 }
             });
         });
+
+        // for inventory
+        $(document).on("change", ".subcategory", function(){
+            subcategory = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getvendor',
+                data: {
+                    'subcategory' : subcategory,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".vendor").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".vendor").append('<option value='+d.id+'>'+d.vendor+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        // for inventory
+        $(document).on("change", ".vendor", function(){
+            vendor = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getspecification',
+                data: {
+                    'vendor' : vendor,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".specification").html('');
+                    $("tr[count='"+data[1]+"']").find(".specification").append('<option>Select Specification</option');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".specification").append('<option value='+d.id+'>'+d.specification+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        // for inventory
+        $(document).on("change", ".specification", function(){
+            specification = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: 'getspecificationrates',
+                data: {
+                    'specification' : specification,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".costing").val(data[0]);
+                }
+            });
+        });        
+
+        //for vendor - specification
+        $(document).on("change", "#category", function(){
+            category = $(this).val();
+            c = 1;
+            $.ajax({
+                type: 'GET',
+                url: 'getsubcategory',
+                data: {
+                    'category' : category,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("#subcategory").html('');
+                    data[0].forEach(function(d){
+                        $("#subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
+
+        
         // $(document).on("click", ".dropdown", function(){
         //     wid = $(this).width();
         //     console.log(wid);

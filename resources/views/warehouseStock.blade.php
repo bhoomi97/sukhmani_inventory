@@ -2,6 +2,12 @@
 
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/warehouseStock.css')}}">
+<link rel="stylesheet" type="text/css" href="css/datatables/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.16/features/searchHighlight/dataTables.searchHighlight.css">
+<script type="text/javascript" src="js/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="js/datatables/jquery.highlight.js"></script>
+<script type="text/javascript" src="//cdn.datatables.net/plug-ins/1.10.16/features/searchHighlight/dataTables.searchHighlight.min.js"></script>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -14,81 +20,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="row"><center style="margin: auto;"><h4>Warehouse Stock (Total Amount: Rs.{{$total}})</h4></center></div>
                       <center><div id="chart_div"></div></center>
-                    <div id="accordion" role="tablist" aria-multiselectable="true">
-                        @foreach($categories as $category)
-                            @if(count($category->stock))
-                              <div class="card" id="stock">
-                                <div class="card-header" role="tab" id="heading{{$category->id}}">
-                                  <h5 class="mb-0">
-                                    <a clas="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$category->id}}" id="stock_head" aria-expanded="true" aria-controls="collapse{{$category->id}}">
-                                        {{$category->category}}<span style="float: right;"> (Total Amt: Rs.{{$category->amount}})</span>
-                                    </a>
-                                  </h5>
-                                </div>
+                      <table class="table table-bordered warehousestock" id="warehouse-stock-table" width="100%">
+                        <thead>
+                          <tr>
+                            <th>Category</th>
+                            <th>SubCategory</th>
+                            <th>Vendor</th>
+                            <th>Specification</th>
+                            <th>Rate/Unit (Rs)</th>
+                            <th>Quantity</th>
+                            <th>Amount</th>
+                            <th>Purchased By</th>
+                            <th>Recieved By</th>
+                            <th>Comment</th>
+                            <th>Date</th>
+                          </tr>
+                        </thead>
+                      </table>
 
-                                <div id="collapse{{$category->id}}" class="collapse" role="tabpanel" aria-labelledby="heading{{$category->id}}">
-                                  <div class="card-block">
-                                    <table class="table" id="stock_table">
-                                        <thead>
-                                            <tr>
-                                                <th>Sub Category</th>
-                                                <th>Rate</th>
-                                                <th>Quantity</th>
-                                                <th>Amount</th>
-                                                <th>Comment</th>
-                                                <th>Date</th>
-                                            </tr>
-                                        </thead>                            
-                                        <tbody>
-                                            @foreach($category->stock as $stock)
-                                                <tr>
-                                                    <td>{{$stock->subcategory->subcategory}}</td>
-                                                    <td>{{$stock->rate}}</td>
-                                                    <td>{{$stock->qty}}</td>
-                                                    <td>{{$stock->amount}}</td>
-                                                    <td>{{$stock->comment}}</td>
-                                                    <td>{{$stock->date}}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                  </div>
-                                </div>
-                              </div>
-                            @endif
-                        @endforeach
-                        <table style="display: none;" class="warehousestock">
-                          <thead>
-                              <tr>
-                                  <th>Sub Category</th>
-                                  <th>Rate</th>
-                                  <th>Quantity</th>
-                                  <th>Amount</th>
-                                  <th>Comment</th>
-                                  <th>Date</th>
-                              </tr>
-                          </thead>                            
-                          <tbody>
-                          @foreach($categories as $category)
-                              @if(count($category->stock))
-                                @foreach($category->stock as $stock)
-                                    <tr>
-                                        <td>{{$stock->subcategory->subcategory}}</td>
-                                        <td>{{$stock->rate}}</td>
-                                        <td>{{$stock->qty}}</td>
-                                        <td>{{$stock->amount}}</td>
-                                        <td>{{$stock->comment}}</td>
-                                        <td>{{$stock->date}}</td>
-                                    </tr>
-                                @endforeach
-                              @endif
-                          @endforeach
-                          </tbody>
-                          
-                        </table>
-                    </div> 
                     <br>
                     <center><a href="" id="warehouseexport" class="btn btn-primary">Generate Report</a></center>
                 </div>
@@ -96,7 +46,41 @@
         </div>
     </div>
 </div>
+<script>
 
+  $(function() {
+    var table = $('#warehouse-stock-table').DataTable({
+      processing: true,
+      serverSide: true,
+      searchHighlight: true,
+      ajax: '{!! route('datatables.warehouseStock') !!}',
+      columns: [
+        { data: 'category', name: 'category' },
+        { data: 'subcategory', name: 'subcategory' },
+        { data: 'vendor', name: 'vendor' },
+        { data: 'specification', name: 'specification' },
+        { data: 'rate', name: 'rate' },
+        { data: 'qty', name: 'qty' },
+        { data: 'amount', name: 'amount' },
+        { data: 'purchased_by', name: 'purchased_by'  },
+        { data: 'recieved_by', name: 'recieved_by'  },
+        { data: 'comment', name: 'comment'  },
+        { data: 'date', name: 'date' }
+      ]
+    });
+  });
+$(document).ready( function () {
+    var table = $('#warehouse-stock-table').DataTable();
+ 
+    table.on( 'draw', function () {
+        var body = $( table.table().body() );
+ 
+        body.unhighlight();
+        body.highlight( table.search() );  
+    } );
+} );
+</script>
+@if(0)
   <script type="text/javascript">
       document.addEventListener('DOMContentLoaded',function(){
 
@@ -132,4 +116,5 @@
             }        
       })
   </script>
+  @endif
 @endsection
