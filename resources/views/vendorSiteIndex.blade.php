@@ -20,8 +20,8 @@
                         @foreach($vendors as $vendor)
                           <tr>
                             <td>{{$vendor->vendor}}</td>
-                            <td><a href="{{URL::to('vendor/stock/'.($vendor->id))}}">Warehouse Stocks</a></td>
-                            <td><a href="{{URL::to('vendor/site/stock/'.($vendor->id))}}">Site Stocks</a></td>
+                            <td><a href="{{URL::to('vendor/stock/'.($vendor->id))}}" style="color: blue;">Warehouse Stock</a></td>
+                            <td><a href="{{URL::to('vendor/site/stock/'.($vendor->id))}}" style="color: blue;">Site Stock</a></td>
                           </tr>
                         @endforeach
                           </table>
