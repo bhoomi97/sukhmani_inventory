@@ -140,4 +140,16 @@ class VendorController extends Controller
         $stocks = SiteStock::whereIn('specification_id',$specs)->with('site')->get();
         return view('vendorSiteStock',compact('stocks'));
     }
+
+    public function stockIndex()
+    {
+        if(Auth::user()->role != 1)
+            abort('404');
+        $categories = Category::get();
+        $vendors = Vendor::get();
+        foreach ($vendors as $key => $vendor) {
+            $vendors[$key]->specs = Specification::where('vendor_id', $vendor->id)->get();
+        }
+        return view('vendorSiteIndex',compact('categories','vendors'));
+    }    
 }
