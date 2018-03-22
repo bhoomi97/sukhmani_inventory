@@ -203,7 +203,8 @@
                 success: function(data){
                     console.log(data);
                     $("tr[count='"+data[1]+"']").find(".subcategory").html('');
-                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option');
+                    $("tr[count='"+data[1]+"']").find(".subcategory").html('<option>Select SubCategory</option>');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option>');
                     data[0].forEach(function(d){
                         $("tr[count='"+data[1]+"']").find(".subcategory").append('<option value='+d.id+'>'+d.subcategory+'</option>');
                         console.log(d);
