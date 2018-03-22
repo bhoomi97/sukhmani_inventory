@@ -23,7 +23,7 @@
                     <div class="jumbotron">
                       <h3><a href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a></h3>
                       <h3><a href="{{route('site.index')}}" id="gen_site">Generate Site Report</a></h3>
-                      <h3><a href="{{route('vendor.index')}}" id="gen_site">Generate Vendor Report</a></h3>
+                      <h3><a href="{{route('vendorStock')}}" id="gen_site">Generate Vendor Report</a></h3>
                     </div>
                     <div class="card-header">Warehouse Stock</div>
                     <div class="jumbotron">
