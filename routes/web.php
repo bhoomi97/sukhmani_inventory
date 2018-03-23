@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('vendor', 'VendorController');
 	Route::resource('labsubcategory', 'LabSubcategoriesController');
 	Route::resource('labcontractor', 'LabContractorController');
+	Route::resource('labpayment', 'LabPaymentController');
 	Route::get('vendorStock', 'VendorController@stockIndex')->name('vendorStock');
 	Route::get('/vendor/stock/{id}', 'VendorController@stock');
 	Route::get('/vendor/site/stock/{id}', 'VendorController@siteStock');
@@ -40,6 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('/getspecification', 'CategoryController@getSpecification')->name('getspecification');
 	Route::get('/getsubcategoryrates', 'CategoryController@getSubCategoryRates')->name('getsubcategoryrates');
 	Route::get('/getspecificationrates', 'CategoryController@getSpecificationRates')->name('getspecificationrates');
+	Route::get('/getlabcontractor', 'LabContractorController@getlabcontractor')->name('getlabcontractor');
 	Route::get('/getspecificationratesfortosite', 'CategoryController@getSpecificationRatesfortosite')->name('getspecificationratesfortosite');
 	Route::get('/getmaxquantity', 'CategoryController@getmaxquantity')->name('getmaxquantity');
 	Route::get('datatables/warehouseStock', 'WarehouseController@warehouseStock')->name('datatables.warehouseStock');

@@ -4,10 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\LabSubcategories;
-use App\LabContractor;
-use Auth;
+use App\Site;
 
-class LabContractorController extends Controller
+class LabPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,14 +15,7 @@ class LabContractorController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->role != 1)
-            abort('404');
-        $subcategories = LabSubcategories::get();
-        foreach ($subcategories as $key => $subcategory) {
-            $contractors = LabContractor::where('subcategory_id',$subcategory->id)->get();
-            $subcategories[$key]->sub = $contractors;
-        }
-        return view('contractor',compact('subcategories'));
+        //
     }
 
     /**
@@ -33,7 +25,9 @@ class LabContractorController extends Controller
      */
     public function create()
     {
-        //
+        $categories = LabSubcategories::get();
+        $sites = Site::where('status',1)->get();
+        return view('labPaymentCreate',compact('categories','sites'));        
     }
 
     /**
@@ -44,16 +38,7 @@ class LabContractorController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->role == 1){
-            $contractor = new LabContractor;
-            $contractor->subcategory_id = $request->subcategory;
-            $contractor->contractor = $request->contractor;
-            $contractor->save();
-            return redirect('/labcontractor');
-        }
-        else{
-            abort('404');
-        }
+        //
     }
 
     /**
@@ -99,12 +84,5 @@ class LabContractorController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getlabcontractor(Request $request){
-        $subcategory = $request->subcategory;
-        $c = $request->c;
-        $contractors = LabContractor::where('subcategory_id',$subcategory)->get();
-        return [$contractors,$c];
     }
 }

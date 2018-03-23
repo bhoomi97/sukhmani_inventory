@@ -66,6 +66,9 @@
                                     <a class="dropdown-item" href="{{ route('vendor.index') }}">
                                         Vendors
                                     </a>
+                                    <a class="dropdown-item" href="{{ route('labpayment.create') }}">
+                                        Labour Payment
+                                    </a>
                                 </div>
                             </li>
                             @if(Auth::user()->role ==1)
@@ -276,6 +279,29 @@
                 }
             });
         });        
+
+        // for lab payment
+        $(document).on("change", ".labsubcategory", function(){
+            subcategory = $(this).val();
+            c = $(this).closest('tr').attr('count');
+            $.ajax({
+                type: 'GET',
+                url: '/getlabcontractor',
+                data: {
+                    'subcategory' : subcategory,
+                    'c' : c
+                },
+                success: function(data){
+                    console.log(data);
+                    $("tr[count='"+data[1]+"']").find(".contractor").html('');
+                    $("tr[count='"+data[1]+"']").find(".vendor").append('<option>Select Vendor</option>');
+                    data[0].forEach(function(d){
+                        $("tr[count='"+data[1]+"']").find(".contractor").append('<option value='+d.id+'>'+d.contractor+'</option>');
+                        console.log(d);
+                    })
+                }
+            });
+        });
 
         //for vendor - specification
         $(document).on("change", "#category", function(){

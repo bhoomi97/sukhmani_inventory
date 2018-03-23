@@ -11,4 +11,9 @@ class LabContractor extends Model
     ];
 
     protected $table = 'lab_contractor';
+    
+    public function subcategory(){
+        return $this->hasOne('App\LabSubcategories','id','subcategory_id');    	
+    }
+
 }
