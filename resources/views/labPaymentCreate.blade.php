@@ -87,7 +87,7 @@
                                 </select>
                             </td>
                             <td>
-                                <select class="form-control contractor" id="warehouse_subcat" name="subcategories[]" required="">
+                                <select class="form-control contractor" id="warehouse_subcat" name="contractors[]" required="">
                                     <option disabled="true">Select Category</option>
                                 </select>
                             </td>

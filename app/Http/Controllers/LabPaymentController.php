@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\LabSubcategories;
 use App\Site;
+use App\LabPayment;
 
 class LabPaymentController extends Controller
 {
@@ -38,7 +39,35 @@ class LabPaymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contractors = $request->contractors;
+        $amounts = $request->amount;
+        $sites = $request->sites;
+        $dates = $request->date;
+        $comments = $request->comment;
+        foreach ($contractors as $key => $contractor) {
+            if($sites[$key] == "all"){
+                $siteslist = Site::where('status',1)->get();
+                foreach ($siteslist as $sitelist) {
+                    $payment = new LabPayment;
+                    $payment->contractor_id = $contractor;
+                    $payment->site_id = $sitelist->id;
+                    $payment->amount = $amounts[$key];
+                    $payment->date = $dates[$key];
+                    $payment->comment = $comments[$key];
+                    $payment->save();
+                    // return $payment;
+                }
+            }else{
+                $payment = new LabPayment;
+                $payment->contractor_id = $contractor;
+                $payment->site_id = $sites[$key];
+                $payment->amount = $amounts[$key];
+                $payment->date = $dates[$key];
+                $payment->comment = $comments[$key];
+                $payment->save();
+            }
+        }
+        return redirect('/labpayment/show');
     }
 
     /**

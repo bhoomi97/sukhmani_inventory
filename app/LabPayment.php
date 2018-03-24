@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class LabPayment extends Model
 {
     protected $fillable = [
-       'id', 'contractor_id', 'amount', 'site_id'
+       'id', 'contractor_id', 'amount', 'site_id','date','comment'
     ];
 
     protected $table = 'lab_payment';
