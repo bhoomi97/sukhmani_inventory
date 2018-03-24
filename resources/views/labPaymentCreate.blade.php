@@ -21,15 +21,21 @@
                                 </select>\
                             </td>\
                             <td>\
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="">\
+                            </td>\
+                            <td>\
                                 <select class="form-control site" id="sites" name="sites[]" required="">\
-                                	@foreach($sites as $site)\
-                                    	<option value="{{$site->id}}">{{$site->site_name}}</option>\
+                                    @foreach($sites as $site)\
+                                        <option value="{{$site->id}}">{{$site->site_name}}</option>\
                                     @endforeach\
                                     <option value="all">ALL Sites</option>\
                                 </select>\
                             </td>\
                             <td>\
-                                <input type="number" class="form-control amount" name="amount[]" step="0.01" required="">\
+                                <input type="date" class="form-control date" name="date[]" required="">\
+                            </td>\
+                            <td>\
+                                <input type="text" class="form-control comment" name="comment[]" >\
                             </td>\
                             <td>\
                                 <img src="{{ asset('/close.png') }}" width="30px;" style="cursor: pointer;" class="deleteRow">\
@@ -63,8 +69,10 @@
                         <tr>
                             <th style="width: 40%;">Category</th>
                             <th style="width: 19%;">Contractor</th>
-                            <th style="width: 19%;">Site</th>
                             <th style="width: 19%;">Amount</th>
+                            <th style="width: 19%;">Site</th>
+                            <th style="width: 19%;">Date</th>
+                            <th style="width: 19%;">Comment</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -84,15 +92,21 @@
                                 </select>
                             </td>
                             <td>
+                                <input type="number" class="form-control amount" name="amount[]" step="0.01" >
+                            </td>
+                            <td>
                                 <select class="form-control site" id="sites" name="sites[]">
-                                	@foreach($sites as $site)
-                                    	<option value="{{$site->id}}">{{$site->site_name}}</option>
+                                    @foreach($sites as $site)
+                                        <option value="{{$site->id}}">{{$site->site_name}}</option>
                                     @endforeach
                                     <option value="all">ALL Sites</option>
                                 </select>
                             </td>
                             <td>
-                                <input type="number" class="form-control amount" name="amount[]" step="0.01" >
+                                <input type="date" class="form-control date" name="date[]" required="">
+                            </td>
+                            <td>
+                                <input type="text" class="form-control comment" name="comment[]" >
                             </td>
                             <td>
                                 <img src="{{ asset('/close.png') }}" width="30px;" style="cursor: pointer;" class="deleteRow">
