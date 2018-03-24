@@ -87,6 +87,9 @@
                                         <a class="dropdown-item" href="{{ route('vendorStock') }}">
                                             Vendor Report
                                         </a>
+                                        <a class="dropdown-item" href="{{ route('siteList') }}">
+                                            Labour Payment Report
+                                        </a>
                                     </div>
                                 </li>
                             @endif
