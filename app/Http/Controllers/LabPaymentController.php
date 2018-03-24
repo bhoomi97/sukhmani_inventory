@@ -78,7 +78,9 @@ class LabPaymentController extends Controller
      */
     public function show($id)
     {
-        //
+        $site = Site::where('id',$id)->first();
+        $payments = LabPayment::where('site_id',$id)->with('contractor')->with('site')->with('contractor.subcategory')->get();
+        return view('labPaymentShow',compact('payments','site'));
     }
 
     /**

@@ -15,9 +15,12 @@
                         </div>
                     @endif
                     <div class="jumbotron">
+                      <center></center>
                        <h3><a href="{{route('site.index')}}" id="add_site">Add/Remove Site</a></h3>
                        <h3><a href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a></h3>
                        <h3><a href="{{route('siteInventory')}}" id="move_site">Move to Site</a></h3>
+                       <h3><a href="{{route('vendor.index')}}" id="move_site">Vendor</a></h3>
+                       <h3><a href="{{route('labpayment.create')}}" id="move_site">Labour Payment</a></h3>
                     </div>
                     @if(Auth::user()->role==1)
                     <div class="jumbotron">

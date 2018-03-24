@@ -15,5 +15,9 @@ class LabPayment extends Model
     public function contractor(){
         return $this->hasOne('App\LabContractor','id','contractor_id');    	
     }
+    
+    public function site(){
+        return $this->hasOne('App\Site','id','site_id');    	
+    }
 
 }

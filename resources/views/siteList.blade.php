@@ -26,6 +26,7 @@
                                 <th>Site Name</th>
                                 <th>Created By</th>
                                 <th>Stock</th>
+                                <th>Lab Payment</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,6 +36,9 @@
                                     <td>{{$site->createduser->name}}</td>
                                     <td>
                                         <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
+                                    </td>
+                                    <td>
+                                        <a href="{{route('labpayment.show',$site->id)}}" id="create_stock">Payments</a>
                                     </td>
                                 </tr>
                             @endforeach

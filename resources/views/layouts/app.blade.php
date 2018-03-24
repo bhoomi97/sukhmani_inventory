@@ -154,6 +154,15 @@
             filename: "Vendor Site Stock"+date+".xls" //do not include extension
           }); 
         }); 
+        $("#labPaymentReport").click(function(){
+            date = new Date();
+          $(".labPaymentReport").table2excel({
+            // exclude CSS class
+            exclude: ".noExl",
+            name: "Worksheet Name",
+            filename: "Site Labour Payment"+date+".xls" //do not include extension
+          }); 
+        }); 
         $("#vendorWarehouseStock").click(function(){
             date = new Date();
           $(".vendorWarehouseStock").table2excel({
