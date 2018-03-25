@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header" id="warehouse_stock">{{$site[0]->site_name}} Stock</div>
+                <div class="card-header" id="warehouse_stock">{{$site->site_name}} Stock</div>
 
                 <div class="card-body">
                     @if (session('status'))
