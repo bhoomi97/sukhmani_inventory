@@ -67,7 +67,7 @@ class LabPaymentController extends Controller
                 $payment->save();
             }
         }
-        return redirect('/labpayment/show');
+        return redirect('/sitelist');
     }
 
     /**
