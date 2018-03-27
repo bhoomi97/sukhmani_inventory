@@ -134,6 +134,6 @@ class LabPaymentController extends Controller
             $pay->site_id = $site;
             $pay->save();
         }
-        return;
+        return redirect('/siteList');
     }
 }
