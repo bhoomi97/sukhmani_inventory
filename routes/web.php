@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('labsubcategory', 'LabSubcategoriesController');
 	Route::resource('labcontractor', 'LabContractorController');
 	Route::resource('labpayment', 'LabPaymentController');
+	Route::post('labpayment/salary', 'LabPaymentController@salary')->name('labpayment.salary');
 	Route::get('vendorStock', 'VendorController@stockIndex')->name('vendorStock');
 	Route::get('/vendor/stock/{id}', 'VendorController@stock');
 	Route::get('/vendor/site/stock/{id}', 'VendorController@siteStock');
