@@ -58,7 +58,7 @@
             </h3>
         </div>
         <div class="row" style="width: 100%; text-align: center;">
-            <h2 id="warehouse_head" style="margin: auto;">Labour Payment</h2>
+            <h2 id="warehouse_head" style="margin: auto;">Labour Payment & Staff Salary</h2>
             
         </div>
         <form method="POST" action="{{route('labpayment.store')}}">
@@ -123,7 +123,7 @@
         <div class="row" style="width: 100%; text-align: center;">
             <h2 id="warehouse_head" style="margin: auto;">Staff Salary</h2>
         </div>
-        <form method="post" action="{{route('labpayment.salary')}}">
+        <form method="post" action="{{route('labpayment.salary')}}" style="width: 100%">
             @csrf
             <table class="table table-hover table-striped table-condensed">
                 <thead>
