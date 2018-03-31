@@ -141,9 +141,10 @@ a#create_stock{
 .wh-inv.container {
   padding: 2rem 0rem;
 }
-.table{
-    max-width: ;
+.table .th-lg{
+    min-width: 11rem ;
 }
+
 h2#site_head{
     color: #01579b ;
     font-weight: 400;
