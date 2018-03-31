@@ -15,7 +15,7 @@
                         </div>
                     @endif
                     <div class="row">
-                        <div class="h-100 col-12 col-md-6 border-right list-group ">
+                        <div class="col-12 col-md-6 border-right list-group no-border-sm">
                           
                             <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="add_site">Add/Remove Site</a>
                             <a class="list-group-item waves-effect light-bg light-color" href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a>
@@ -25,7 +25,7 @@
                               
                         </div>
                         @if(Auth::user()->role==1)
-                        <div class="h-100 col-12 col-md-6 list-group ">
+                        <div class="col-12 col-md-6 list-group mt-sm">
                           <a class="list-group-item waves-effect light-bg light-color" href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a>
                           <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="gen_site">Generate Site Report</a>
                           <a class="list-group-item waves-effect light-bg light-color" href="{{route('vendorStock')}}" id="gen_site">Generate Vendor Report</a>

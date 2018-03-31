@@ -49,31 +49,32 @@
 </script>
 
 <div class="container">
-  <div class="jumbotron">
-    <div class="row">
-        <div class="row" style="width: 100%;">
+  <div class="light-bg pt-3 pb-3 light-color">
+    <div class="">
+        <div class="text-center" style="width: 100%;">
             <h3>
-                <a class="btn btn-primary" href="{{route('labcontractor.index')}}">Contractors</a>
-                <a class="btn btn-primary" href="{{route('labsubcategory.index')}}">Labour SubCategories</a>
+                <a class="btn theme" href="{{route('labcontractor.index')}}">Contractors</a>
+                <a class="btn theme" href="{{route('labsubcategory.index')}}">Labour SubCategories</a>
             </h3>
         </div>
-        <div class="row" style="width: 100%; text-align: center;">
+        <div class="" style="width: 100%; text-align: center;">
             <h2 id="warehouse_head" style="margin: auto;">Labour Payment & Staff Salary</h2>
             
         </div>
         <form method="POST" action="{{route('labpayment.store')}}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">
+                <div class="table-responsive">
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">Category</th>
-                            <th style="width: 19%;">Contractor</th>
-                            <th style="width: 19%;">Amount</th>
-                            <th style="width: 19%;">Site</th>
-                            <th style="width: 19%;">Date</th>
-                            <th style="width: 19%;">Comment</th>
-                            <th>Delete</th>
+                            <th class="th-sm th-md">Category</th>
+                            <th class="th-sm th-md">Contractor</th>
+                            <th class="th-sm th-md">Amount</th>
+                            <th class="th-sm th-md">Site</th>
+                            <th class="th-sm th-md">Date</th>
+                            <th class="th-sm th-md">Comment</th>
+                            <th class="th-sm th-md">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table">
@@ -114,62 +115,72 @@
                         </tr>
                     </tbody>
                 </table>
-                <span style="float: right;"><input type="button" class="btn btn-sm btn-primary" onclick="addfield()" value="Add Row"></span>
+                </div>
+
+                <button class="float-right light-color" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" alt="Add Row">
+                    <span  class="fas fa-plus-circle fa-2x theme-color-text mt-2"></span> Add Row
+                </button>
+
+                
                 <br><br>
-                <center><input type="submit" class="form-control btn btn-primary" style="width: 150px;margin-bottom: 40px;" name="submit"></center>
+                <center><input type="submit" class="form-control btn theme" style="width: 150px;margin-bottom: 40px;" name="submit"></center>
             </div>        
         </form>
 
-        <div class="row" style="width: 100%; text-align: center;">
+        <div class="" style="width: 100%; text-align: center;">
             <h2 id="warehouse_head" style="margin: auto;">Staff Salary</h2>
         </div>
         <form method="post" action="{{route('labpayment.salary')}}" style="width: 100%">
             @csrf
-            <table class="table table-hover table-striped table-condensed">
-                <thead>
-                    <tr>
-                        <th>Contractor</th>
-                        <th>Amount</th>
-                        <th>Comment</th>
-                        <th>Date</th>
-                        <th>Sites</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <select class="form-control contractor" id="warehouse_subcat" name="contractor" required="">
-                                @foreach($conts as $cont)
-                                    <option value="{{$cont->id}}">{{$cont->contractor}}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <div class="">
-                                <input class="form-control" type="number" name="amount" required="">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="">
-                                <input class="form-control" type="text" name="comment">
-                            </div>
-                        </td>
-                        <td>
-                            <div class="">
-                                <input class="form-control" type="date" name="date" required="">
-                            </div>
-                        </td>
-                        <td>
-                            @foreach($sites as $site)
-                                <div class="checkbox">
-                                    <label class="checkbox"><input type="checkbox" value="{{$site->id}}" name="site[]">{{$site->site_name}}</label>
-                                </div>
-                            @endforeach
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-                <center><input type="submit" class="form-control btn btn-primary" style="width: 150px;margin-bottom: 40px;" name="submit"></center>            
+            <div class="col-md-12" style="overflow-x:auto;" >
+                <div class="table-responsive">
+                    <table class="table table-hover table-striped table-condensed">
+                        <thead>
+                            <tr>
+                                <th class="th-sm" >Contractor</th>
+                                <th class="th-sm">Amount</th>
+                                <th class="th-sm">Comment</th>
+                                <th class="th-sm">Date</th>
+                                <th class="th-sm">Sites</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select class="form-control contractor" id="warehouse_subcat" name="contractor" required="">
+                                        @foreach($conts as $cont)
+                                            <option value="{{$cont->id}}">{{$cont->contractor}}</option>
+                                        @endforeach
+                                    </select>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input class="form-control" type="number" name="amount" required="">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input class="form-control" type="text" name="comment">
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="">
+                                        <input class="form-control" type="date" name="date" required="">
+                                    </div>
+                                </td>
+                                <td>
+                                    @foreach($sites as $site)
+                                        <div class="checkbox">
+                                            <label class="checkbox"><input type="checkbox" value="{{$site->id}}" name="site[]">{{$site->site_name}}</label>
+                                        </div>
+                                    @endforeach
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+                <center><input type="submit" class="form-control btn theme" style="width: 150px;margin-bottom: 40px;" name="submit"></center>            
         </form>
     </div>
 </div>

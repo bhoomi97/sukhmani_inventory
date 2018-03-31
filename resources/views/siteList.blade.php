@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header">Sites</div>
 
-                <div class="card-body">
+                <div class="card-body light-color">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 id="create">Site Stock</h3>
+                            <h3 class="light-color" id="create">Site Stock</h3>
                             <form id="create_form" method="post" action="{{route('site.store')}}">
                                 {{ csrf_field() }}
                                 <input type="text" id="create_text" name="site" required="true">

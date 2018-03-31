@@ -8,29 +8,31 @@
             <div class="card">
                 <div class="card-header">Vendors</div>
 
-                <div class="card-body">
+                <div class="card-body light-color">
                     @if(Auth::user()->role == 1)
-                        <center>
-                            <h3 id="create">Create a new Vendor</h3>
+                        
+                            <h3 class="light-color text-center" id="create">Create a new Vendor</h3>
                             <form id="create_form" method="post" action="{{route('vendor.store')}}">
                                 {{ csrf_field() }}
                                 Category
-                                  <select class="form-control" id="category" name="category">
+                                  <select class="form-control mt-2 mb-2" id="category" name="category">
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->category}}</option>
                                     @endforeach
                                   </select>
                                   Sub Category
-                                  <select class="form-control" class="subcategory" id="subcategory" name="subcategory">
+                                  <select class="form-control mt-2 mb-2" class="subcategory" id="subcategory" name="subcategory">
                                         <option value="null">Select Category</option>
                                   </select>
                                   Vendor
-                                  <input type="text" id="vendor" name="vendor" required="true">
+                                  <input class="mt-2 mb-4 ml-2 mr-2" type="text" id="vendor" name="vendor" required="true">
                                   Specification (, seperated)
-                                  <input type="text" id="specification" name="specification" required="true">
-                                    <input type="submit" id="create_btn" value="Create Vendor" class="btn btn-info" >
+                                  <input class="ml-2" type="text" id="specification" name="specification" required="true">
+                                  <center>
+                                    <input type="submit" id="create_btn" value="Create Vendor" class="btn theme" >
+                                  </center>
                             </form>
-                        </center>
+                        
                         <br>
                     @endif
                     <div id="accordion" role="tablist" aria-multiselectable="true">

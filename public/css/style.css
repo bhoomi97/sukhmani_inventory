@@ -15,6 +15,14 @@
     letter-spacing: 1px;
     padding: 1rem 2rem;
  }
+
+ #accordion .card-header {
+  background-color: #bfbfbf47;
+ }
+ #accordion .card-header a {
+  color: #cdd1d4;
+ }
+
  a.nav-link.waves-effect.waves-light {
     color: white;
     text-transform: uppercase;
@@ -31,7 +39,6 @@ a.nav-link:hover {
     margin-top: 4%;
 }
 form{
-	margin-top: 3rem;
 }
 .form-group{
 	margin: 1rem 2rem;
@@ -91,6 +98,15 @@ a.btn-link{
  
 }
 
+@media (max-width: 576px) {
+  .no-border {
+    border-right: none !important;
+  }
+  .mt-sm {
+    margin-top: 1.5rem;
+  }
+}
+
 /* Dashboard */
 a#add_site,a#add_warehouse,a#move_site,a#gen_warehouse,a#gen_site{
     margin-top: 1rem 1rem;
@@ -127,13 +143,14 @@ form#create_form {
 }
 table.table td{
     text-align: center;
-    color: slategrey;
+    color: #fff;
 }
 table.table th{
     text-align: center;
 }
 a#create_stock{
-    color: #0091ea;
+    color: #fff;
+    margin-top:-15px;
     font-weight: bold;
 }
 
@@ -145,11 +162,7 @@ a#create_stock{
     min-width: 11rem ;
 }
 
-h2#site_head{
-    color: #01579b ;
-    font-weight: 400;
-    text-align: center;
-}
+
 
 
 

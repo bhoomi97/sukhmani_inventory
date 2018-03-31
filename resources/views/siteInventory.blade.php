@@ -71,9 +71,8 @@
     }    
 </script>
 
-<div class="container">
-  <div class="jumbotron">
-    <div class="row">
+<div class="container light-bg light-color">
+    <div class="pt-3 pb-3">
         @if(session('errors'))
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
@@ -97,26 +96,29 @@
             <?php $s=0; ?>
         @endif
         <?php session()->forget('errors');session()->forget('success'); ?>
-        <h2 id="site_head" style="margin: auto;">To Site</h2>
+        <div class="text-center font-weight-bold">
+            <h2 id="site_head">To Site</h2>
+        </div>
         <form method="POST" action="{{ route('siteInventory') }}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">
+                <div class="table-responsive">
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">Category</th>
-                            <th style="width: 19%;">Sub Category</th>
-                            <th style="width: 19%;">Vendor</th>
-                            <th style="width: 19%;">Specification</th>
-                            <th style="width: 19%;">To Site</th>
-                            <th style="width: 15%;" id="rate">Rate/Unit(Rs)</th>
-                            <th style="width: 12%;">Quantity</th>
-                            <th style="width: 15%;">Total Cost(Rs)</th>
-                            <th style="width: 15%;">Delivered To</th>
-                            <th style="width: 15%;">Delivered By</th>
-                            <th style="width: 15%;">Comment</th>
-                            <th style="width:10%;">Date</th>
-                            <th>Delete</th>
+                            <th class="th-lg">Category</th>
+                            <th class="th-lg">Sub Category</th>
+                            <th class="th-lg">Vendor</th>
+                            <th class="th-lg">Specification</th>
+                            <th class="th-lg" >To Site</th>
+                            <th class="th-lg" id="rate">Rate/Unit(Rs)</th>
+                            <th class="th-lg">Quantity</th>
+                            <th class="th-lg">Total Cost(Rs)</th>
+                            <th class="th-lg">Delivered To</th>
+                            <th class="th-lg">Delivered By</th>
+                            <th class="th-lg">Comment</th>
+                            <th class="th-lg" >Date</th>
+                            <th class="th-lg" >Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table">
@@ -181,13 +183,22 @@
                         </tr>
                     </tbody>
                 </table>
-                <span style="float: right;"><input type="button" class="btn btn-sm btn-primary" onclick="addfield()" value="Add Row"></span>
+                </div>
+
+                <button class="float-right light-color" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" >  
+                    <span class= "fas fa-plus-circle fa-2x theme-color-text mt-2"></span> Add Row
+                </button>
+
+
+                
                 <br><br>
-                <center><input type="submit" class="form-control btn btn-primary" style="width: 150px; margin-bottom: 40px;" name="submit"></center>
-            </div>        
+
+                <center><input type="submit" class="form-control btn theme" style="width: 150px; margin-bottom: 40px;" name="submit"></center>
+            </div>
+                  
         </form>
     </div>
-  </div>
+  
 </div>
 @endsection
 @section('script')

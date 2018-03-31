@@ -8,18 +8,18 @@
             <div class="card">
                 <div class="card-header">Sub Categories</div>
 
-                <div class="card-body">
+                <div class="card-body  light-color">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 id="create">Create a new Sub Category</h3>
+                            <h3 class="light-color" id="create">Create a new Sub Category</h3>
                             <form id="create_form" method="post" action="{{route('subcategory.store')}}">
                                 {{ csrf_field() }}
-                                  <select class="form-control" id="category" name="category">
+                                  <select class="form-control mt-4" id="category" name="category">
                                     @foreach($categories as $category)
                                         <option value="{{$category->id}}">{{$category->category}}</option>
                                     @endforeach
                                   </select>
-                              <input type="text" id="create_text" name="subcategory" required="true">
+                              <input class="mt-2 mb-2" type="text" id="create_text" name="subcategory" required="true">
                                 <input type="submit" id="create_btn" value="Create Sub Category" class="btn btn-info" >
                             </form>
                         </center>

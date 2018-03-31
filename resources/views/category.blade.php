@@ -8,10 +8,10 @@
             <div class="card">
                 <div class="card-header">Categories</div>
 
-                <div class="card-body">
+                <div class="card-body light-bg light-color">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 id="create">Create a new Category</h3>
+                            <h3 class="light-color" id="create">Create a new Category</h3>
                             <form id="create_form" method="post" action="{{route('category.store')}}">
                                 {{ csrf_field() }}
                                 <input type="text" id="create_text" name="category" required="true">
@@ -23,7 +23,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Category Name</th>
+                                <th class="text-uppercase">Category Name</th>
                             </tr>
                         </thead>
                         <tbody>

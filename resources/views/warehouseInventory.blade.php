@@ -150,8 +150,8 @@
                     </tbody>
                 </table>
                 </div>
-                <button class="float-right" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" alt="Add Row">
-                    <span  class="fas fa-plus-circle fa-2x theme-color-text mt-2"></span>
+                <button class="float-right light-color" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" alt="Add Row">
+                    <span  class="fas fa-plus-circle fa-2x theme-color-text mt-2"></span> Add Row
                 </button>
                 <br><br>
                 <center><input type="submit" class="form-control btn theme" style="width: 150px;margin-bottom: 40px;" name="submit"></center>

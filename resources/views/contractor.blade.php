@@ -11,7 +11,7 @@
                 <div class="card-body">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 id="create">Create a new Contractor</h3>
+                            <h3 class="light-color" id="create">Create a new Contractor</h3>
                             <form id="create_form" method="post" action="{{route('labcontractor.store')}}">
                                 {{ csrf_field() }}
                                   <select class="form-control" id="subcategory" name="subcategory">

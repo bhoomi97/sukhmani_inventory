@@ -3,15 +3,15 @@
 @section('content')
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center ">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Sites</div>
 
-                <div class="card-body">
+                <div class="card-body light-color light-bg">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 id="create">Create a new Site</h3>
+                            <h3 class="light-color" id="create">Create a new Site</h3>
                             <form id="create_form" method="post" action="{{route('site.store')}}">
                                 {{ csrf_field() }}
                                 <input type="text" id="create_text" name="site" required="true">
@@ -20,32 +20,33 @@
                         </center>
                         <br>
                     @endif
+                    <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Site Name</th>
-                                <th>Created By</th>
-                                <th>Deleted By</th>
-                                <th>Status</th>
+                                <th class="th-md">Site Name</th>
+                                <th class="th-md">Created By</th>
+                                <th class="th-md">Deleted By</th>
+                                <th class="th-md">Status</th>
                                 @if(Auth::user()->role == 1)
-                                    <th>Delete</th>
-                                    <th>Stock</th>
+                                    <th class="th-md">Delete</th>
+                                    <th class="th-md">Stock</th>
                                 @endif
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($sites as $site)
                                 <tr>
-                                    <td>{{$site->site_name}}</td>
-                                    <td>{{$site->createduser->name}}</td>
-                                    <td>
+                                    <td class="align-middle">{{$site->site_name}}</td>
+                                    <td class="align-middle">{{$site->createduser->name}}</td>
+                                    <td class="align-middle">
                                         @if(isset($site->deleteduser->name))
                                             {{$site->deleteduser->name}}
                                         @else
                                             --
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="align-middle">
                                         @if($site->status == 1)
                                             Active
                                         @else
@@ -57,14 +58,16 @@
                                             @if($site->status == 0)
                                                 --
                                             @else
-                                                {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id], 'style' => 'margin-top: -15px;']) }}
+                                                {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
                                                     {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                                                 {{ Form::close() }}
                                             @endif                                        
                                         </td>
                                         <td>
                                         @if($site->status == 1)
-                                            <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
+                                            <button class="btn btn-default">
+                                                  <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
+                                            </button>
                                         @else
                                             --
                                         @endif
@@ -74,7 +77,7 @@
                             @endforeach
                         </tbody>
                     </table>
-
+                    </div>
                 </div>
             </div>
         </div>

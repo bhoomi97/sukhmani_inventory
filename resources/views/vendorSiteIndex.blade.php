@@ -5,14 +5,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card light-color">
                 <div class="card-header">Vendors</div>
 
                 <div class="card-body">
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                           <table class="table">
-                            <tr>
+                            <tr class="text-uppercase">
                               <th>Vendor</th>
                               <th>Warehouse Stock</th>
                               <th>Site Stock</th>

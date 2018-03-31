@@ -1,10 +1,13 @@
 
 /*navbar - #2b3033
 bg - #3e4549
+
+contaner bg #2b303382
 theme - #38c8e0
 on hover - #35A3BC
-grey text - #cdd1d4 
-grey bg - #bfbfbf47 */
+grey text - #cdd1d4 light color
+grey bg - #bfbfbf47 light bg
+*/
 
 .theme {
   background: #38c8e0;
@@ -12,6 +15,10 @@ grey bg - #bfbfbf47 */
 .theme-color-text {
 	color: #38c8e0;
 
+}
+
+.container-bg {
+	background-color: #2b303382;
 }
 
 .light-bg {
