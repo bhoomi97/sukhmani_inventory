@@ -1,13 +1,19 @@
 *:focus {
     outline: none;
 }
+.card {
+  background: none;
+}
+
+.card-body {
+  background-color: #2b303382;
+}
 .card-header{
-    background-color: #00acc1;
-    text-align: center;
+    background-color: #38c8e0;
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 1rem 0rem;
+    padding: 1rem 2rem;
  }
  a.nav-link.waves-effect.waves-light {
     color: white;
@@ -15,17 +21,20 @@
     letter-spacing: 1px;
     margin-left: 1rem;
 }
+a.nav-link:hover {
+  background: #38c8e0;
+}
 .navbar-expand-lg .navbar-nav{
 	margin-right: -4rem;
 }
 .row.justify-content-center {
-    margin-top: 8%;
+    margin-top: 4%;
 }
 form{
 	margin-top: 3rem;
 }
 .form-group{
-	margin-bottom: 3rem;
+	margin: 1rem 2rem;
 }
 
 /*login page*/
@@ -37,55 +46,32 @@ input:focus{
 	outline: 0;
 }
 
-label#email{
-    color: grey;
+label#email, label#password, label#rememberme, label#name, label#confirm_password, p#forget {
+    color: #ffffffa1 !important;
 }
 
-label#password {
-    color: grey;
-}
 
-label#rememberme {
-    color: grey;
-}
-
-label#name{
-    color: grey;
-}
-
-label#confirm_password{
-    color: grey;
-    margin-bottom: 2rem;
-}
 
 button.btn.btn-info.waves-effect.waves-light {
-    margin-top: -2rem;
 }
 
-p#forget{
-	color: grey;
-}
 
 a.btn-link{
 	margin-top: -1rem;
 }
 @media(max-width: 760px){
   input#email{
-    margin-bottom: -2rem;
   }
   button.btn.btn-info.waves-effect.waves-light {
-    margin-left: 2rem;
-    width: 80%;
+    width: 70%;
   }
   p#forget{
     margin-top: 1rem;
   }
    label#confirm_password{
     margin-bottom: 0rem;
-    margin-top: -2rem;
    }
    label#email{
-     margin-top: -2rem;
    }
    input#password-confirm{
      margin-bottom: 2rem;
@@ -107,12 +93,21 @@ a.btn-link{
 
 /* Dashboard */
 a#add_site,a#add_warehouse,a#move_site,a#gen_warehouse,a#gen_site{
-    color: #01579b;
     margin-top: 1rem 1rem;
 }
 a#add_site:hover,a#add_warehouse:hover,a#move_site:hover,a#gen_warehouse:hover,a#gen_site:hover,
 a#add_site:focus,a#add_warehouse:focus,a#move_site:focus,a#gen_warehouse:focus,a#gen_site:focus{
     color: #88BDBC;
+}
+.list-group {
+  padding-left: 10px;
+}
+.list-group-item {
+  border:none;
+  color: #3e4549;
+}
+.list-group-item {
+  background-color: none;
 }
 
 /* Add/Remove site */
@@ -136,7 +131,6 @@ table.table td{
 }
 table.table th{
     text-align: center;
-    color: #00ACC1;
 }
 a#create_stock{
     color: #0091ea;
@@ -144,10 +138,13 @@ a#create_stock{
 }
 
 /* warehouse inventory */
-.table{
-    max-width: 500%;
+.wh-inv.container {
+  padding: 2rem 0rem;
 }
-h2#warehouse_head,h2#site_head{
+.table{
+    max-width: ;
+}
+h2#site_head{
     color: #01579b ;
     font-weight: 400;
     text-align: center;

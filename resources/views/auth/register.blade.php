@@ -62,8 +62,8 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                        <div class="form-group row mb-0 text-center">
+                            <div class="col-12">
                                 <button type="submit" class="btn btn-info">
                                     Register
                                 </button>

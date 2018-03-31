@@ -62,44 +62,45 @@
 
 </script>
 
-<div class="container">
-  <div class="jumbotron">
-    <div class="row">
-        <div class="row" style="width: 100%;">
+<div class="wh-inv container light-bg light-color">
+  
+    <div class="">
+        <div class="text-center" style="width: 100%;">
             <h3>
-                <a class="btn btn-primary" href="{{route('category.index')}}">Category</a>
-                <a class="btn btn-primary" href="{{route('subcategory.index')}}">SubCategory</a>
-                <a class="btn btn-primary" href="{{route('vendor.index')}}">Vendor</a>
+                <a class="btn theme" href="{{route('category.index')}}">Category</a>
+                <a class="btn theme" href="{{route('subcategory.index')}}">SubCategory</a>
+                <a class="btn theme" href="{{route('vendor.index')}}">Vendor</a>
             </h3>
         </div>
-        <div class="row" style="width: 100%; text-align: center;">
-            <h2 id="warehouse_head" style="margin: auto;">Warehouse Stock</h2>
+        <div class="text-center font-weight-bold">
+            <h2 id="warehouse_head">Warehouse Stock</h2>
             
         </div>
         <form method="POST" action="{{route('saveWarehouseInventory')}}">
             {{ csrf_field() }}
             <div class="col-md-12" style="overflow-x:auto;">
-                <table class="table table-hover table-striped table-condensed">
+                <div class="table-responsive">
+                <table class="table table-hover table-striped table-condensed w-auto">
                     <thead>
                         <tr>
-                            <th style="width: 40%;">Category</th>
-                            <th style="width: 19%;">Sub Category</th>
-                            <th style="width: 19%;">Vendor</th>
-                            <th style="width: 19%;">Specification</th>
-                            <th style="width: 15%;" id="rate">Rate/Unit(Rs)</th>
-                            <th style="width: 12%;">Quantity</th>
-                            <th style="width: 15%;">Total Cost(Rs)</th>
-                            <th style="width: 15%;">Purchased By</th>
-                            <th style="width: 15%;">Recieved By</th>
-                            <th style="width: 15%;">Comment</th>
-                            <th style="width:10%;">Date</th>
-                            <th>Delete</th>
+                            <th class="th-lg">Category</th>
+                            <th class="th-lg">Sub Category</th>
+                            <th class="th-lg">Vendor</th>
+                            <th class="th-lg">Specification</th>
+                            <th class="th-lg" id="rate">Rate/Unit(Rs)</th>
+                            <th class="th-lg">Quantity</th>
+                            <th class="th-lg" >Total Cost(Rs)</th>
+                            <th class="th-lg">Purchased By</th>
+                            <th class="th-lg">Recieved By</th>
+                            <th class="th-lg">Comment</th>
+                            <th class="th-lg" >Date</th>
+                            <th class="th-lg">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table">
                         <tr count="0">
-                            <td>
-                                <select class="form-control category" name="categories[]">
+                            <td class="w-auto">
+                                <select class="form-control category " name="categories[]">
                                     <option >Select Category</option>
                                     @foreach($cats as $cat)
                                         <option value="{{$cat->id}}">{{$cat->category}}</option>
@@ -148,12 +149,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <span style="float: right;"><input type="button" class="btn btn-sm btn-primary" onclick="addfield()" value="Add Row"></span>
+                </div>
+                <button class="float-right" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" alt="Add Row">
+                    <span  class="fas fa-plus-circle fa-2x theme-color-text mt-2"></span>
+                </button>
+                <!-- <span class="fas fa-plus-circle fa-2x theme-color-text mt-2" style="float: right;"><input type="button" onclick="addfield()"></span> -->
                 <br><br>
-                <center><input type="submit" class="form-control btn btn-primary" style="width: 150px;margin-bottom: 40px;" name="submit"></center>
+                <center><input type="submit" class="form-control btn theme" style="width: 150px;margin-bottom: 40px;" name="submit"></center>
             </div>        
         </form>
     </div>
-  </div>
+  
 </div>
 @endsection

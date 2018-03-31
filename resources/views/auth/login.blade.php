@@ -51,11 +51,13 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                        <div class="form-group row justify-content-md-center mb-0">
+                            <div class="col-12 text-center ">
                                 <button type="submit" class="btn btn-info">
                                     Login
                                 </button>
+                            </div>
+                            <div class="col-md-6 offset-md-6">
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     <p id="forget">Forgot Your Password?</p>

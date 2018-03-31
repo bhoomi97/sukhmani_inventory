@@ -21,7 +21,8 @@
                         </div>
                     @endif
                       <center><div id="chart_div"></div></center>
-                      <table class="table table-bordered warehousestock" id="warehouse-stock-table" width="100%">
+                      <div class="table-responsive">
+                      <table class="table table-bordered w-auto warehousestock" id="warehouse-stock-table" >
                         <thead>
                           <tr>
                             <th>Category</th>
@@ -38,6 +39,7 @@
                           </tr>
                         </thead>
                       </table>
+                    </div>
 
                     <br>
                     <center><a href="" id="warehouseexport" class="btn btn-primary">Generate Report</a></center>

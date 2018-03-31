@@ -1,0 +1,45 @@
+
+/*navbar - #2b3033
+bg - #3e4549
+theme - #38c8e0
+on hover - #35A3BC
+grey text - #cdd1d4 
+grey bg - #bfbfbf47 */
+
+.theme {
+  background: #38c8e0;
+}
+.theme-color-text {
+	color: #38c8e0;
+
+}
+
+.light-bg {
+	background-color: #bfbfbf47 !important;
+}
+.light-color {
+	color: #cdd1d4  !important ;
+}
+
+#app {
+	background: #3e4549;
+	font-family: "Karla";
+}
+.navbar {
+	background: #2b3033; 
+	padding: 25px 0px 25px 0px;
+}
+
+
+.navbar .dropdown-menu {
+	background: #2b3033eb;
+    border: none;
+    border-radius: 0px;
+}
+.navbar .dropdown-menu a{
+	color: #fff !important;
+}	
+.navbar .dropdown-menu a:hover {
+	color: #000 !important;
+}
+

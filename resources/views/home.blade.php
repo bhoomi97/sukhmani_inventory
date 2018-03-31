@@ -4,9 +4,9 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-12">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header theme">Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,31 +14,34 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="jumbotron">
-                      <center></center>
-                       <h3><a href="{{route('site.index')}}" id="add_site">Add/Remove Site</a></h3>
-                       <h3><a href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a></h3>
-                       <h3><a href="{{route('siteInventory')}}" id="move_site">Move to Site</a></h3>
-                       <h3><a href="{{route('vendor.index')}}" id="move_site">Vendor</a></h3>
-                       <h3><a href="{{route('labpayment.create')}}" id="move_site">Labour Payment</a></h3>
+                    <div class="row">
+                        <div class="h-100 col-12 col-md-6 border-right list-group ">
+                          
+                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="add_site">Add/Remove Site</a>
+                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a>
+                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('siteInventory')}}" id="move_site">Move to Site</a>
+                            <a class="list-group-item waves-effect  light-bg light-color" href="{{route('vendor.index')}}" id="move_site">Vendor</a>
+                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('labpayment.create')}}" id="move_site">Labour Payment</a>
+                              
+                        </div>
+                        @if(Auth::user()->role==1)
+                        <div class="h-100 col-12 col-md-6 list-group ">
+                          <a class="list-group-item waves-effect light-bg light-color" href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a>
+                          <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="gen_site">Generate Site Report</a>
+                          <a class="list-group-item waves-effect light-bg light-color" href="{{route('vendorStock')}}" id="gen_site">Generate Vendor Report</a>
+                          <a class="list-group-item waves-effect light-bg light-color" href="{{route('siteList')}}" id="gen_site">Generate Labour Payment Report</a>
+                        </div>
                     </div>
-                    @if(Auth::user()->role==1)
-                    <div class="jumbotron">
-                      <h3><a href="{{route('warehouseStock')}}" id="gen_warehouse">Generate Warehouse Report</a></h3>
-                      <h3><a href="{{route('site.index')}}" id="gen_site">Generate Site Report</a></h3>
-                      <h3><a href="{{route('vendorStock')}}" id="gen_site">Generate Vendor Report</a></h3>
-                      <h3><a href="{{route('siteList')}}" id="gen_site">Generate Labour Payment Report</a></h3>
-                    </div>
-                    <div class="card-header">Warehouse Stock</div>
-                    <div class="jumbotron">
+                    <div class="card-header mt-4">Warehouse Stock</div>
+                    <div class="jumbotron light-bg">
                       <center><div id="chart_div" style="width: 100%"></div></center>
                     </div>
                     <div class="card-header">Site Wise Stock</div>
-                    <div class="jumbotron">
+                    <div class="jumbotron light-bg">
                       <center><div id="chart_div1" style="width: 100%px; height: 500px;"></div></center>
                     </div>
                     <div class="card-header">Vendor Stock</div>
-                    <div class="jumbotron">
+                    <div class="jumbotron light-bg">
                       <center><div id="chart_div1" style="width: 100%px; height: 500px;"></div></center>
                     </div>
                     @endif

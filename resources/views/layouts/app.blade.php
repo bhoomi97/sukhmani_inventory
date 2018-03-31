@@ -18,12 +18,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/css/mdb.min.css" rel="stylesheet">
+    <!-- Font apis -->
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700|Ubuntu:400,700,400italic,700italic|Nunito|Karla|Raleway|Maven+Pro' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="{{asset('css/common.css')}}">
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+
+
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-dark unique-color-dark">
+        <nav class="navbar navbar-dark navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}" style="padding-top: 4px;">
                     <img src="{{ URL::to('logo.jpg') }}" height="40px;">
@@ -32,7 +39,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse mt-2 mb-2" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
