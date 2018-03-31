@@ -153,7 +153,6 @@
                 <button class="float-right" style="background-color: transparent; border: none;cursor: pointer;" onclick="addfield()" alt="Add Row">
                     <span  class="fas fa-plus-circle fa-2x theme-color-text mt-2"></span>
                 </button>
-                <!-- <span class="fas fa-plus-circle fa-2x theme-color-text mt-2" style="float: right;"><input type="button" onclick="addfield()"></span> -->
                 <br><br>
                 <center><input type="submit" class="form-control btn theme" style="width: 150px;margin-bottom: 40px;" name="submit"></center>
             </div>        
