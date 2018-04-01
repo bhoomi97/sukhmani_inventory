@@ -111,7 +111,7 @@
                             <th class="th-lg">Vendor</th>
                             <th class="th-lg">Specification</th>
                             <th class="th-lg" >To Site</th>
-                            <th class="th-lg" id="rate">Rate/Unit(Rs)</th>
+                            <th class="th-lg" id="rate">Rate/Unit (Rs)</th>
                             <th class="th-lg">Quantity</th>
                             <th class="th-lg">Total Cost(Rs)</th>
                             <th class="th-lg">Delivered To</th>

@@ -4,7 +4,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
     <div class="row justify-content-center ">
-        <div class="col-md-8">
+        <div class="col-sm-10">
             <div class="card">
                 <div class="card-header">Sites</div>
 
@@ -30,7 +30,7 @@
                                 <th class="th-md">Status</th>
                                 @if(Auth::user()->role == 1)
                                     <th class="th-md">Finish</th>
-                                    <th class="th-md">Stock</th>
+                                    <!-- <th class="th-md">Stock</th> -->
                                 @endif
                             </tr>
                         </thead>
@@ -63,7 +63,7 @@
                                                 {{ Form::close() }}
                                             @endif                                        
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                         @if($site->status == 1)
                                             <button class="btn btn-default">
                                                   <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
@@ -71,7 +71,7 @@
                                         @else
                                             --
                                         @endif
-                                        </td>
+                                        </td> -->
                                     @endif
                                 </tr>
                             @endforeach

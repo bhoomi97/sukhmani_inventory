@@ -53,8 +53,8 @@
     <div class="">
         <div class="text-center" style="width: 100%;">
             <h3>
-                <a class="btn theme" href="{{route('labcontractor.index')}}">Contractors</a>
-                <a class="btn theme" href="{{route('labsubcategory.index')}}">Labour SubCategories</a>
+                <a class="btn theme" href="{{route('labcontractor.index')}}">Create Contractors</a>
+                <a class="btn theme" href="{{route('labsubcategory.index')}}">Create Labour SubCategories</a>
             </h3>
         </div>
         <div class="" style="width: 100%; text-align: center;">
@@ -137,11 +137,11 @@
                     <table class="table table-hover table-striped table-condensed">
                         <thead>
                             <tr>
-                                <th class="th-sm" >Contractor</th>
-                                <th class="th-sm">Amount</th>
-                                <th class="th-sm">Comment</th>
-                                <th class="th-sm">Date</th>
-                                <th class="th-sm">Sites</th>
+                                <th class="th-lg" >Contractor</th>
+                                <th class="th-lg">Amount</th>
+                                <th class="th-lg">Comment</th>
+                                <th class="th-lg">Date</th>
+                                <th class="th-lg">Sites</th>
                             </tr>
                         </thead>
                         <tbody>

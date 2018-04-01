@@ -19,7 +19,7 @@
 	margin-right: -4rem;
 }
 .row.justify-content-center {
-    margin-top: 8%;
+    margin-top: 4%;
 }
 #stock_table th{
     color: #00ACC1;
@@ -28,4 +28,13 @@
 #stock_table td{
     color: slategrey;
     text-align: center;
+}
+
+#warehouse-stock-table tbody {
+  color : #3e4549   ;
+}
+
+
+.dataTables_wrapper .dataTables_length,.dataTables_wrapper .dataTables_filter,.dataTables_wrapper .dataTables_info,.dataTables_wrapper .dataTables_processing,.dataTables_wrapper .dataTables_paginate {
+    color:#cdd1d4;
 }

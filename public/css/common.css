@@ -1,4 +1,6 @@
-
+body {
+	background-color: #3e4549;
+}
 
 .theme {
   background: #38c8e0;
@@ -23,6 +25,10 @@
 	color: #fff !important;
 }
 
+.trans-bg {
+	background: transparent;
+}
+
 #app {
 	background: #3e4549;
 	font-family: "Karla";
@@ -45,3 +51,8 @@
 	color: #000 !important;
 }
 
+
+
+.table-bordered {
+    border: 1px solid #dee2e6 !important;
+}

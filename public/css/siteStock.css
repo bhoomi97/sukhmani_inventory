@@ -2,13 +2,14 @@
     outline: none;
 }
 #stock_card{
-    background-color: #00acc1;
     text-align: center;
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
     padding: 1rem 0rem;
  }
+
+
  a.nav-link.waves-effect.waves-light {
     color: white;
     text-transform: uppercase;
@@ -19,7 +20,11 @@
 	margin-right: -4rem;
 }
 .row.justify-content-center {
-    margin-top: 8%;
+    margin-top: 4%;
+}
+
+.table-bordered {
+    border: 1px solid #dee2e6 !important;
 }
 #stock_table th{
     color: #00ACC1;

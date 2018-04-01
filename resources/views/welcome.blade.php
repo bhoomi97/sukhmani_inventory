@@ -12,7 +12,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background: url("about-img1.jpg") no-repeat center center fixed;
+                background: url("about-img.jpeg") no-repeat center center fixed;
                 background-size: cover;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;

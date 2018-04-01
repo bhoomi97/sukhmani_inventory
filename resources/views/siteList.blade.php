@@ -4,18 +4,22 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/style.css')}}">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-sm-10">
             <div class="card">
                 <div class="card-header">Sites</div>
 
-                <div class="card-body light-color">
+                <div class="card-body light-color light-bg">
                     @if(Auth::user()->role == 1)
                         <center>
-                            <h3 class="light-color" id="create">Site Stock</h3>
+                            <h3 class="light-color" id="create">
+                                Site Reports and Labour Payments
+                            </h3>
                             
                         </center>
                         <br>
                     @endif
+                    <div class="table-responsive">
+                    
                     <table class="table">
                         <thead>
                             <tr>
@@ -46,6 +50,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                    </div>
 
                 </div>
             </div>

@@ -87,9 +87,9 @@
                             <th class="th-lg">Sub Category</th>
                             <th class="th-lg">Vendor</th>
                             <th class="th-lg">Specification</th>
-                            <th class="th-lg" id="rate">Rate/Unit(Rs)</th>
+                            <th class="th-lg" id="rate">Rate/Unit (Rs)</th>
                             <th class="th-lg">Quantity</th>
-                            <th class="th-lg" >Total Cost(Rs)</th>
+                            <th class="th-lg" >Total Cost (Rs)</th>
                             <th class="th-lg">Purchased By</th>
                             <th class="th-lg">Recieved By</th>
                             <th class="th-lg">Comment</th>

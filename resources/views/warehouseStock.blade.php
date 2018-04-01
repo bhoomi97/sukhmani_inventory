@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<link rel="stylesheet" type="text/css" href="{{asset('css/warehouseStock.css')}}">
 <link rel="stylesheet" type="text/css" href="css/datatables/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="{{asset('css/warehouseStock.css')}}">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/plug-ins/1.10.16/features/searchHighlight/dataTables.searchHighlight.css">
 <script type="text/javascript" src="js/datatables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="js/datatables/jquery.highlight.js"></script>
@@ -11,10 +11,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card">
+            <div class="card trans-bg" >
                 <div class="card-header" id="warehouse_stock">WareHouse Stock</div>
 
-                <div class="card-body ">
+                <div class="card-body light-bg">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -23,7 +23,7 @@
                       <center><div id="chart_div"></div></center>
                       <div class="table-responsive">
                       <table class="table table-bordered w-auto warehousestock text-center" id="warehouse-stock-table" >
-                        <thead class=""  >
+                        <thead class="light-color">
                           <tr>
                             <th>Category</th>
                             <th>SubCategory</th>
@@ -42,7 +42,7 @@
                     </div>
 
                     <br>
-                    <center><a href="" id="warehouseexport" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="" id="warehouseexport" class="btn theme">Generate Report</a></center>
                 </div>
             </div>
         </div>

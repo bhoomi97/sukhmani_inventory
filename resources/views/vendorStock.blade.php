@@ -10,18 +10,20 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
+        <div class="col-sm-10">
+            <div class="card trans-bg">
                 <div class="card-header" id="warehouse_stock">{{$vendor[0]->vendor}} Stock</div>
 
-                <div class="card-body">
+                <div class="card-body light-bg">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
+                    <div class="table-responsive">
+                    
                       <table class="table table-bordered vendorWarehouseStock" id="" width="100%">
-                        <thead>
+                        <thead class="light-color">
                           <tr>
                             <th>Category</th>
                             <th>SubCategory</th>
@@ -32,7 +34,7 @@
                             <th>Date</th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody style="background-color: #fff;">
                         	@foreach($stocks as $stock)
                         		<tr>
                         			<th>{{$stock->specification->vendor->subcategory->category->category}}</th>
@@ -46,9 +48,10 @@
                         	@endforeach
                         </tbody>
                       </table>
+                      </div>
 
                     <br>
-                    <center><a href="#" id="vendorWarehouseStock" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="#" id="vendorWarehouseStock" class="btn theme">Generate Report</a></center>
                 </div>
             </div>
         </div>

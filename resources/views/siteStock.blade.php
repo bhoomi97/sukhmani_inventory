@@ -4,25 +4,26 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/siteStock.css')}}">
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header" id="stock_card">{{$site->site_name}} Stock</div>
-                <div class="card-body">
+        <div class="col-sm-12">
+            <div class="card trans-bg">
+                <div class="card-header theme" id="stock_card">{{$site->site_name}} Stock</div>
+                <div class="card-body light-bg">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="row"><center style="margin: auto;"><h4>Site Stock</h4></center></div>
+                    <!-- <div class="light-color"><center style="margin: auto;"><h4>Site Stock</h4></center></div> -->
                       <center><div id="chart_div"></div></center>
-                        <table class="sitestock table">
-                          <thead>
+                      <div class="table-responsive">
+                        <table class="sitestock table table-bordered">
+                          <thead class="light-color">
                               <tr>
                                   <th>Category</th>
                                   <th>Sub Category</th>
                                   <th>Vendor</th>
                                   <th>Specification</th>
-                                  <th>Rate</th>
+                                  <th class="th-sm">Rate</th>
                                   <th>Quantity</th>
                                   <th>Amount</th>
                                   <th>Delivered To</th>
@@ -31,7 +32,7 @@
                                   <th>Date</th>
                               </tr>
                           </thead>                            
-                          <tbody>
+                          <tbody style="background-color: #fff;">
                             @foreach($stocks as $stock)
                                     <tr>
                                         <td>{{$stock->specification->vendor->subcategory->category->category}}</td>
@@ -49,8 +50,10 @@
                             @endforeach
                           </tbody>
                         </table>
+                      </div>
+                        
                     <br>
-                    <center><a href="#" id="siteexport" class="btn btn-primary">Generate Report</a></center>
+                    <center><a href="#" id="siteexport" class="btn theme">Generate Report</a></center>
 
                 </div>
             </div>
