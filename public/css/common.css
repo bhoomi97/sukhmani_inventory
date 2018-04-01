@@ -19,6 +19,10 @@
 	color: #cdd1d4  !important ;
 }
 
+.white-text {
+	color: #fff !important;
+}
+
 #app {
 	background: #3e4549;
 	font-family: "Karla";

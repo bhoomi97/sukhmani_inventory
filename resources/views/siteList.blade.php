@@ -12,11 +12,7 @@
                     @if(Auth::user()->role == 1)
                         <center>
                             <h3 class="light-color" id="create">Site Stock</h3>
-                            <form id="create_form" method="post" action="{{route('site.store')}}">
-                                {{ csrf_field() }}
-                                <input type="text" id="create_text" name="site" required="true">
-                                <input type="submit" id="create_btn" value="Create site" class="btn btn-info" >
-                            </form>
+                            
                         </center>
                         <br>
                     @endif
@@ -32,13 +28,19 @@
                         <tbody>
                             @foreach($sites as $site)
                                 <tr>
-                                    <td>{{$site->site_name}}</td>
-                                    <td>{{$site->createduser->name}}</td>
+                                    <td class="align-middle">{{$site->site_name}}</td>
+                                    <td class="align-middle">{{$site->createduser->name}}</td>
                                     <td>
-                                        <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
+                                        <button class="btn btn-default">
+                                            <a href="{{route('site.show',$site->id)}}" id="create_stock">Stock</a>
+                                        </button>
+                                        
                                     </td>
-                                    <td>
-                                        <a href="{{route('labpayment.show',$site->id)}}" id="create_stock">Payments</a>
+                                    <td >
+                                        <button class="btn btn-success">
+                                            <a href="{{route('labpayment.show',$site->id)}}" id="create_stock">Payments</a>    
+                                        </button>
+                                        
                                     </td>
                                 </tr>
                             @endforeach

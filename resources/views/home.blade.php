@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-12 col-md-6 border-right list-group no-border-sm">
                           
-                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="add_site">Add/Remove Site</a>
+                            <a class="list-group-item waves-effect light-bg light-color" href="{{route('site.index')}}" id="add_site">Manage Sites</a>
                             <a class="list-group-item waves-effect light-bg light-color" href="{{route('warehouseInventory')}}" id="add_warehouse">Add to Warehouse</a>
                             <a class="list-group-item waves-effect light-bg light-color" href="{{route('siteInventory')}}" id="move_site">Move to Site</a>
                             <a class="list-group-item waves-effect  light-bg light-color" href="{{route('vendor.index')}}" id="move_site">Vendor</a>

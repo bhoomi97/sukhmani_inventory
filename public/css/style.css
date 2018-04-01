@@ -99,7 +99,7 @@ a.btn-link{
 }
 
 @media (max-width: 576px) {
-  .no-border {
+  .no-border-sm {
     border-right: none !important;
   }
   .mt-sm {

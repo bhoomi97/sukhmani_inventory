@@ -68,13 +68,13 @@
                 <table class="table table-hover table-striped table-condensed">
                     <thead>
                         <tr>
-                            <th class="th-sm th-md">Category</th>
-                            <th class="th-sm th-md">Contractor</th>
-                            <th class="th-sm th-md">Amount</th>
-                            <th class="th-sm th-md">Site</th>
-                            <th class="th-sm th-md">Date</th>
-                            <th class="th-sm th-md">Comment</th>
-                            <th class="th-sm th-md">Delete</th>
+                            <th class="th-lg">Category</th>
+                            <th class="th-lg">Contractor</th>
+                            <th class="th-lg">Amount</th>
+                            <th class="th-lg">Site</th>
+                            <th class="th-lg">Date</th>
+                            <th class="th-lg">Comment</th>
+                            <th class="th-lg">Delete</th>
                         </tr>
                     </thead>
                     <tbody id="table">

@@ -29,7 +29,7 @@
                                 <th class="th-md">Deleted By</th>
                                 <th class="th-md">Status</th>
                                 @if(Auth::user()->role == 1)
-                                    <th class="th-md">Delete</th>
+                                    <th class="th-md">Finish</th>
                                     <th class="th-md">Stock</th>
                                 @endif
                             </tr>
@@ -59,7 +59,7 @@
                                                 --
                                             @else
                                                 {{ Form::open(['method' => 'DELETE', 'route' => ['site.destroy', $site->id]]) }}
-                                                    {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+                                                    {{ Form::submit('Finish', ['class' => 'btn btn-danger']) }}
                                                 {{ Form::close() }}
                                             @endif                                        
                                         </td>

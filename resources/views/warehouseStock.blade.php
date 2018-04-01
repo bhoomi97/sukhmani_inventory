@@ -10,11 +10,11 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header" id="warehouse_stock">WareHouse Stock</div>
 
-                <div class="card-body">
+                <div class="card-body ">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
@@ -22,8 +22,8 @@
                     @endif
                       <center><div id="chart_div"></div></center>
                       <div class="table-responsive">
-                      <table class="table table-bordered w-auto warehousestock" id="warehouse-stock-table" >
-                        <thead>
+                      <table class="table table-bordered w-auto warehousestock text-center" id="warehouse-stock-table" >
+                        <thead class=""  >
                           <tr>
                             <th>Category</th>
                             <th>SubCategory</th>

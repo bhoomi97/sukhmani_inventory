@@ -11,20 +11,34 @@
                 <div class="card-body">
 
                     <div id="accordion" role="tablist" aria-multiselectable="true">
-                          <table class="table">
-                            <tr class="text-uppercase">
-                              <th>Vendor</th>
-                              <th>Warehouse Stock</th>
-                              <th>Site Stock</th>
-                            </tr>
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr class="text-uppercase">
+                                  <th class="th-xs " >Vendor</th>
+                                  <th class="th-lg ">Warehouse Stock</th>
+                                  <th class="th-lg">Site Stock</th>
+                                </tr>
+                              </thead>
+                            
                         @foreach($vendors as $vendor)
                           <tr>
-                            <td>{{$vendor->vendor}}</td>
-                            <td><a href="{{URL::to('vendor/stock/'.($vendor->id))}}" style="color: blue;">Warehouse Stock</a></td>
-                            <td><a href="{{URL::to('vendor/site/stock/'.($vendor->id))}}" style="color: blue;">Site Stock</a></td>
+                            <td class="align-middle">{{$vendor->vendor}}</td>
+                            <td>
+                              <button class="btn btn-secondary p-2">
+                                <a href="{{URL::to('vendor/stock/'.($vendor->id))}}" style="color: #fff;">Warehouse Stock</a>                             
+                              </button>
+                            </td>
+                            <td>
+                              <button class="btn btn-warning p-2">
+                                <a href="{{URL::to('vendor/site/stock/'.($vendor->id))}}" style="color: #fff;">Site Stock</a>                           
+                              </button>
+                            </td>
                           </tr>
                         @endforeach
-                          </table>
+                          </table>  
+                          </div>
+                          
                     </div> 
 
                 </div>
